@@ -1,0 +1,109 @@
+// WooCommerce
+@import "woo";
+
+// Typography
+.entry-title {
+	@extend .h1;
+}
+
+// Animations
+a,
+.btn {
+	@include animate();
+	@include animate-property((background-color, color));
+
+}
+
+// Images
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+// Screen readers
+.screen-reader-text {
+	@extend .sr-only;
+}
+
+.page-wrapper {
+	padding: $spacer*3 0;
+}
+
+// Footer
+.footer-wrapper {
+	background-color: $gray-lighter;
+	color: #fff;
+	a {
+		color: currentColor;
+	}
+}
+
+.site-info {
+	@extend .small;
+}
+
+.footer-widgets-wrapper {
+	padding: $spacer 0;
+}
+
+// Blog
+// Read more link
+.more-link {
+	@extend .btn, .btn-primary-outline;
+	margin-top: $spacer;
+}
+
+// iSeek logo
+.iseek-replace {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2px;
+  height: 2rem;
+  width: auto;
+  background: url(images/iseek-white.svg) left top no-repeat;
+  color: rgba(0, 0, 1, 0);
+}
+
+// Pagination
+.pagination {
+	.pages {
+		&:hover,
+		&:focus {
+			color: inherit;
+			background-color: inherit;
+		}
+	}
+}
+
+// Previous / Next Post
+.post-navigation {
+	border-top: 1px solid $gray-light;
+}
+
+// Buttons
+.btn {
+	margin-bottom: $spacer;
+}
+
+.btn-alt {
+	border: 1px solid;
+}
+
+.btn-white {
+	background-color: white;
+	color: $brand-primary;
+}
+
+// Top Bar
+.top-bar-container {
+	display: flex;
+	align-items: stretch;
+	.text-right & {
+		justify-content: flex-end;
+	}
+	
+	.cart-btn {
+		flex-basis: 2rem;
+		text-align: center;
+	}
+}

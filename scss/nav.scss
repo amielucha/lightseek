@@ -1,0 +1,127 @@
+// Main Nav
+.menu-item-has-children {
+	@extend .dropdown;
+
+	&:hover,
+	&:active {
+		@extend .open;
+	}
+}
+
+// Sub menu
+.sub-menu {
+	@extend .dropdown-menu;
+	margin-top: 0;
+	padding: 0;
+
+	.nav-item, .nav-item + .nav-item {
+		margin-left: 0;
+		float: none;
+		position: relative;
+
+		.nav-link {
+			@extend .dropdown-item;
+			display: block;
+			white-space: normal;
+			padding: $spacer * .5;
+			color: $gray;
+		}
+
+		&:hover,
+		&:focus {
+			> .nav-link {
+				background-color: $gray-lightest;
+		    color: $gray;
+		    text-decoration: none;
+			}
+		}
+	}
+
+	> .nav-item {
+		position: relative;
+
+		// 3rd+ level menu enhancement.
+		//   Increases the hover area when moving the cursor
+		//   so the sub-sub-menu doesn't hide by accident.
+		&.menu-item-has-children:hover:after {
+			$size: 5rem;
+			content: '';
+			width: $size;
+			height: $size * 2;
+			position: absolute;
+			display: block;
+			z-index: 1;
+			left: 56%;
+			top: 50%;
+		  transform-origin: left top;
+		  transform: rotate(-25deg);
+
+			// Debug helper:
+			//background: rgba(0,0,0,.3);
+		}
+	}
+
+	.sub-menu {
+		left: 100%;
+		top: 0;
+
+		.nav-item:after {
+			display: none;
+		}
+	}
+}
+
+// 1st level only
+.main-navigation {
+	padding-top: 0;
+	padding-bottom: 0;
+
+	.nav {
+		> .nav-item {
+			> .nav-link {
+				padding: 23px $spacer * 2;
+				//border-left: 1px solid $gray-light;
+				//border-right: 1px solid $gray-light;
+				color: $gray;
+			}
+
+			&:hover,
+			&:focus {
+				> .nav-link {
+					background-color: $gray-lightest;
+			    color: $gray;
+			    text-decoration: none;
+				}
+			}
+		}
+
+		.nav-item + .nav-item {
+			margin-left: 0;
+
+			> .nav-link {
+				border-left: none;
+			}
+		}
+	}
+}
+
+// All items
+.main-navigation {
+	.nav-item {
+		&.current_page_parent,
+		&.current-menu-item {
+			> .nav-link {
+				color: #fff;
+				background-color: $brand-primary;
+			}
+
+			&:hover,
+			&:focus {
+				> .nav-link {
+					color: #fff;
+					background-color: darken($brand-primary, 15%);
+				}
+			}
+		}
+	}
+}
