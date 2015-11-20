@@ -4,6 +4,9 @@ $body-flex-height: true !default;
 // WooCommerce
 @import "woo";
 
+// Gravity Forms
+@import "gravity";
+
 // Typography
 .entry-title {
 	@extend .h1;

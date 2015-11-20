@@ -1,0 +1,13 @@
+.gfield {
+	@extend .form-group;
+	
+	input,
+	textarea {
+		@extend .form-control;
+	}
+}
+
+.gform_button {
+	@extend .btn;
+	@extend .btn-primary;
+}
