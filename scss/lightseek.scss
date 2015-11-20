@@ -1,3 +1,6 @@
+// Options
+$body-flex-height: true !default;
+
 // WooCommerce
 @import "woo";
 
@@ -106,4 +109,32 @@ img {
 		flex-basis: 2rem;
 		text-align: center;
 	}
+}
+
+// Push Footer using Flex
+@if $body-flex-height {
+	body {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	
+	.page-wrapper {
+		flex: 1;
+	}
+	
+	// IE hack
+	// Bug details: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
+	@media screen and (-ms-high-contrast:none) {
+     body { display: block } /* IE10 */
+     }
+}
+
+// Floating images
+.alignleft {
+	margin-right: 2 * $spacer;
+}
+
+.alignright {
+	margin-left: 2 * $spacer;
 }
