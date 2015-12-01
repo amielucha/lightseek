@@ -5,7 +5,7 @@
  * @package baSeek
  */
 if ( !class_exists( 'WooCommerce' ) )
-    exit();
+  return;
 
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
