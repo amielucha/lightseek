@@ -82,7 +82,7 @@ add_action( 'wp_enqueue_scripts', 'lightseek_scripts' );
  */
 function lightseek_add_google_fonts() {
 	//$gfonts  = 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300|Roboto:400,300,500,400italic,500italic,700,700italic|Source+Code+Pro:400,700';
-	$gfonts  = '//fonts.googleapis.com/css?family=Biryani:400,700,800,300,600|League+Script';
+	$gfonts  = 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300';
 	wp_register_style('lightseek-googleFonts', $gfonts);
 	wp_enqueue_style( 'lightseek-googleFonts');
 }
