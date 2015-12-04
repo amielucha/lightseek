@@ -37,6 +37,18 @@ switch ( $footer_widget_count ) {
 
 	<div class="footer-widgets-wrapper">
 		<div class="footer-widgets-container container">
+			<?php if ( has_nav_menu( 'footer' ) ){
+				echo '<div class="footer-menu">';
+				wp_nav_menu(
+					array (
+						'theme_location' => 'footer',
+						'menu_class'     => 'nav navbar-nav',
+						'menu_id'		 => 'footer-menu'
+					)
+				);
+				echo '</div>'; // .footer-menu
+			}
+			?>
 			<div class="footer-widgets-row row">
 				<?php if ( $footer_widget_count != 0 ){
 					for ( $i=1; $i <= $footer_widget_count; $i++ ) {

@@ -59,6 +59,7 @@ if ( ! function_exists( 'lightseek_image_sizes' ) ) {
  */
 register_nav_menus( array(
 	'primary' => __( 'Menu', 'baseek' ),
+	'footer' => __( 'Footer Menu', 'baseek' ),
 ) );
 
 /**
