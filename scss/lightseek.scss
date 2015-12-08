@@ -107,10 +107,20 @@ img {
 	.text-right & {
 		justify-content: flex-end;
 	}
-	
+
 	.cart-btn {
 		flex-basis: 2rem;
 		text-align: center;
+	}
+}
+
+// Main Nav
+.navbar-nav {
+	display: flex;
+    justify-content: center;
+
+	@include media-breakpoint-down(sm) {
+		flex-flow: column;
 	}
 }
 
@@ -121,11 +131,11 @@ img {
 		flex-direction: column;
 		min-height: 100vh;
 	}
-	
+
 	.page-wrapper {
 		flex: 1;
 	}
-	
+
 	// IE hack
 	// Bug details: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
 	@media screen and (-ms-high-contrast:none) {

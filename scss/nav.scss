@@ -125,3 +125,23 @@
 		}
 	}
 }
+
+// Menu Toggle
+.menu-toggle {
+	position: absolute;
+}
+
+.menu-toggle-label {
+	@extend .btn, .btn-secondary;
+}
+
+@include media-breakpoint-down(sm) {
+
+	.menu-toggle + .nav-menu-container {
+		display: none;
+	}
+
+	.menu-toggle:checked + .nav-menu-container {
+		display: block;
+	}
+}
