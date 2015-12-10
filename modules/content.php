@@ -14,7 +14,8 @@
 			<?php if ( function_exists('time_ago') ) time_ago(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif ?>
-		<?php if ( has_post_thumbnail() ) echo '<div class="post-cover"><a href="' . esc_url( get_permalink() ) . '" title="' . get_the_title() .  '">' . get_the_post_thumbnail() . '</a></div>' ?>
+		<?php //if ( has_post_thumbnail() ) echo '<div class="post-cover"><a href="' . esc_url( get_permalink() ) . '" title="' . get_the_title() .  '">' . get_the_post_thumbnail() . '</a></div>' ?>
+		<?php if ( has_post_thumbnail() ) echo '<a class="post-cover alignright" href="' . esc_url( get_permalink() ) . '" title="' . get_the_title() .  '">' . get_the_post_thumbnail(null, 'thumbnail') . '</a>' ?>
 	</header>
 
 	<div class="entry-content">

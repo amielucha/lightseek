@@ -143,11 +143,26 @@ img {
      }
 }
 
-// Floating images
-.alignleft {
-	margin-right: 2 * $spacer;
+// Timestamp
+.entry-meta {
+	margin-bottom: $spacer;
+
+	time {
+		opacity: .7;
+	}
 }
 
-.alignright {
-	margin-left: 2 * $spacer;
+// Post Cover
+.post-cover {
+	&.alignright {
+		max-width: 150px;
+
+		@include media-breakpoint-down(xs){
+			float: none;
+			display: block;
+			margin: $spacer 0;
+			max-width: 100%;
+			text-align: center;
+		}
+	}
 }
