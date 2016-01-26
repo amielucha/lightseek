@@ -18,7 +18,7 @@
 
 	<div id="site-navigation-wrapper" class="site-navigation-wrapper">
 		<nav id="site-navigation" class="main-navigation navbar container" role="navigation">
-			<label for="menu-toggle" class="menu-toggle-label hidden-md-up"><span class="hamburger" aria-hidden="true">☰</span> Main Menu</label>
+			<label for="menu-toggle" class="menu-toggle-label hidden-md-up"><span class="hamburger" aria-hidden="true">&#8801;</span> Main Menu</label>
 			<input type="checkbox" id="menu-toggle" class="menu-toggle invisible" aria-controls="primary-menu" />
 			<?php if ( has_nav_menu( 'primary' ) ) wp_nav_menu (
 				array (
