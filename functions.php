@@ -32,11 +32,8 @@ require get_template_directory() . '/inc/tiny-mce.php';
 require get_template_directory() . '/inc/widgets.php';
 
 //WooCommerce
-require get_template_directory() . '/inc/woocommerce.php';
-
-// TODO Add WooCommerce plugin settings
-/*if ( class_exists( 'WooCommerce' ) )
-	require get_template_directory() . '/inc/woo.php';*/
+if ( class_exists( 'WooCommerce' ) )
+	require get_template_directory() . '/inc/woocommerce.php';
 
 /*
  * Set up theme options and variables
@@ -73,8 +70,11 @@ function lightseek_scripts() {
 	// https://github.com/typekit/webfontloader
 	wp_enqueue_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js', array(), '1.5.18', true );
 
+	// FitVids
+	wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), '20160206', true );
+
 	// Main Script
-	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery', 'webfont' ), '20151010', true );
+	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery', 'webfont', 'fitvids' ), '20151010', true );
 }
 add_action( 'wp_enqueue_scripts', 'lightseek_scripts' );
 
