@@ -4,7 +4,7 @@ Theme URI: http://iseek.ie/
 Author: Slawek Amielucha
 Author URI: http://amielucha.com/
 Description: iSeek light theme.
-Version: 1.2.1
+Version: 1.3
 Text Domain: lightseek
 */
 
@@ -31,6 +31,10 @@ $font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-s
 
 // Lightseek defaults
 @import "scss/lightseek";
+
+// Before activating disable Gravity Forms default styling and select HTML5 forms
+// $gravity-inline-inputs: true;
+// @import "scss/gravity";
 
 // Typography
 .entry-title {

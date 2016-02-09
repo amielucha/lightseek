@@ -1,13 +1,132 @@
-.gfield {
-	@extend .form-group;
-	
-	input,
-	textarea {
-		@extend .form-control;
-	}
-}
+// Settings
+$gravity-inline-inputs: false !default;
 
+//Form button
 .gform_button {
 	@extend .btn;
 	@extend .btn-primary;
+}
+
+// Form Controls
+.gform_wrapper {
+	.gform_fields {
+		padding-left: 0;
+	}
+
+	.gfield {
+		list-style: none;
+		@extend .form-group;
+	}
+
+	//select,
+	textarea,
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="number"],
+	input[type="password"],
+	input[type="url"] {
+		@extend .form-control;
+	}
+
+	input[type="file"] {
+		@extend .form-control-file;
+	}
+
+	.gfield_radio {
+		> li {
+			@if $gravity-inline-inputs {
+			  @extend .radio-inline;
+			} @else {
+				@extend .radio;
+			}
+			list-style: none;
+		}
+	}
+
+	.gfield_checkbox {
+		> li {
+			@if $gravity-inline-inputs {
+			  @extend .checkbox-inline;
+			} @else {
+				@extend .checkbox;
+			}
+		}
+	}
+
+	.gfield_radio,
+	.gfield_checkbox {
+		padding-left: 0;
+		> li {
+			padding-left: 1.25rem;
+			label {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+// Validation
+.gfield_error {
+	@extend .has-danger;
+
+	.validation_message {
+		@extend .form-control-label;
+		color: $brand-danger;
+	}
+}
+
+.validation_error {
+	@extend .form-control-label;
+	color: $brand-danger;
+}
+
+.gfield_error input {
+	@extend .form-control-error;
+}
+
+// Multiple Column Inputs
+.gf_name_has_2,
+.gf_name_has_3,
+.gf_name_has_4 {
+	label {
+		@extend .text-muted;
+	}
+}
+
+@include media-breakpoint-up(md){
+	.gf_name_has_2 {
+		@include make-row();
+
+		> span {
+			@include make-col();
+			@include make-col-span(12);
+		}
+	}
+
+	.gf_name_has_3 {
+		@include make-row();
+
+		> span {
+			@include make-col();
+			@include make-col-span(8);
+		}
+	}
+
+	.gf_name_has_4 {
+		@include make-row();
+
+		> span {
+			@include make-col();
+			@include make-col-span(6);
+		}
+	}
+}
+
+// Custom Form Elements
+.gform_wrapper {
+
+	.gfield_select {
+		@extend .c-select;
+	}
 }
