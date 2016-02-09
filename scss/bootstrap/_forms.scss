@@ -14,7 +14,7 @@
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
-  border: $border-width solid $input-border;
+  border: $input-btn-border-width solid $input-border-color;
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
   @include box-shadow($input-box-shadow);
@@ -261,7 +261,7 @@ input[type="checkbox"] {
 
 .form-control-success,
 .form-control-warning,
-.form-control-error {
+.form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
@@ -285,11 +285,11 @@ input[type="checkbox"] {
   }
 }
 
-.has-error {
+.has-danger {
   @include form-control-validation($brand-danger);
 
-  .form-control-error {
-    background-image: url($form-icon-error);
+  .form-control-danger {
+    background-image: url($form-icon-danger);
   }
 }
 
@@ -354,7 +354,7 @@ input[type="checkbox"] {
 // .has-warning {
 //   @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
 // }
-// .has-error {
+// .has-danger {
 //   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
 // }
 //
@@ -380,8 +380,6 @@ input[type="checkbox"] {
 //
 // Requires wrapping inputs and labels with `.form-group` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
-//
-// Heads up! This is mixin-ed into `.navbar-form` in _navbar.scss.
 
 .form-inline {
 
@@ -394,7 +392,7 @@ input[type="checkbox"] {
       vertical-align: middle;
     }
 
-    // In navbar-form, allow folks to *not* use `.form-group`
+    // Allow folks to *not* use `.form-group`
     .form-control {
       display: inline-block;
       width: auto; // Prevent labels from stacking above inputs in `.form-group`
