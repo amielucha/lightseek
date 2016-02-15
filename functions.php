@@ -11,6 +11,7 @@ Class SeekConfig {
 	const SIDEBAR = true;
 	const SIDEBAR_W = 8;
 	const FOOTER_WIDGETS_COUNT = 4;
+	const FOOTER_MENU = true;
 }
 
 //Template setup
@@ -54,10 +55,27 @@ if ( ! function_exists( 'lightseek_image_sizes' ) ) {
 /**
  * Register menus.
  */
-register_nav_menus( array(
-	'primary' => __( 'Menu', 'baseek' ),
-	'footer' => __( 'Footer Menu', 'baseek' ),
-) );
+$menusArray = array(
+	'primary' => __( 'Menu', 'lightseek' ),
+	// Add more menu locations as needed
+);
+
+if ( SeekConfig::FOOTER_MENU )
+	$menusArray['footer'] =  __( 'Footer Menu', 'lightseek' );
+
+register_nav_menus( $menusArray );
+
+/**
+ * Use Google hosting for jQuery.
+ */
+function google_hosted_jquery() {
+	if (!is_admin()) {
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, '1.11.3');
+		wp_enqueue_script('jquery');
+	}
+}
+add_action('init', 'google_hosted_jquery');
 
 /**
  * Enqueue scripts and styles.
