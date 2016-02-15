@@ -44,3 +44,13 @@ function wpb_add_font_awesome() {
 	wp_enqueue_style( 'font-awesome');
 }
 add_action('wp_print_styles', 'wpb_add_font_awesome');
+
+
+/**
+ * Remove WP Logo from the admin bar
+ */
+function remove_wp_logo( $wp_admin_bar ) {
+	$wp_admin_bar->remove_node( 'wp-logo' );
+	$wp_admin_bar->remove_node( 'comments' );
+}
+add_action( 'admin_bar_menu', 'remove_wp_logo', 999 );
