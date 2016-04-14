@@ -17,9 +17,6 @@ Class SeekConfig {
 //Template setup
 require get_template_directory() . '/inc/init.php';
 
-//Load Jetpack compatibility file
-require get_template_directory() . '/inc/jetpack.php';
-
 //Nav Menus
 require get_template_directory() . '/inc/nav.php';
 
@@ -40,11 +37,11 @@ if ( class_exists( 'WooCommerce' ) )
  * Set up theme options and variables
  */
 if ( ! isset( $content_width ) )
-	$content_width = 1200;
+	$content_width = 1110;
 
 if ( ! function_exists( 'lightseek_image_sizes' ) ) {
 	function lightseek_image_sizes() {
-		set_post_thumbnail_size( 1200, 420, array( 'center', 'center') ); // 16:9
+		set_post_thumbnail_size( 1110, 420, array( 'center', 'center') ); // 16:9
 		add_image_size('large-img', 1920, 800);
 		add_image_size('medium-img', 860, 400);
 		add_image_size('small-img', 640, 267);

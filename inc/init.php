@@ -28,9 +28,18 @@ if ( ! function_exists( 'lightseek_theme_setup' ) ) {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
+		/* Custom logo introduced in WP 4.5 */
+		add_theme_support( 'custom-logo', array(
+			'header-text'	=> array( 'site-title', 'site-description' ),
+		) );
 		add_theme_support( 'html5', array(
 			'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
 		) );
+		/* JetPack Infinite Scroll support */
+		add_theme_support( 'infinite-scroll', array(
+		'container' => 'main',
+		'footer'    => 'page',
+	) );
 	}
 	add_action( 'after_setup_theme', 'lightseek_theme_setup' );
 }

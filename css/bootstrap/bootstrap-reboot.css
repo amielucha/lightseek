@@ -1,4 +1,4 @@
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css commit fe56763 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -16,7 +16,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
 menu,
 nav,
@@ -181,7 +180,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="search"] {
   -webkit-appearance: textfield;
-  box-sizing: content-box;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -228,33 +226,18 @@ html {
   box-sizing: inherit;
 }
 
-@-moz-viewport {
-  width: device-width;
-}
-
 @-ms-viewport {
-  width: device-width;
-}
-
-@-o-viewport {
-  width: device-width;
-}
-
-@-webkit-viewport {
-  width: device-width;
-}
-
-@viewport {
   width: device-width;
 }
 
 html {
   font-size: 16px;
+  -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #373a3c;
@@ -329,6 +312,21 @@ a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):focus,
+a:not([href]):hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):focus {
+  outline: none;
 }
 
 pre {
@@ -416,7 +414,6 @@ legend {
 }
 
 input[type="search"] {
-  box-sizing: inherit;
   -webkit-appearance: none;
 }
 

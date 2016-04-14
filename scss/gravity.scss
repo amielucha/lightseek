@@ -99,8 +99,7 @@ $gravity-inline-inputs: false !default;
 		@include make-row();
 
 		> span {
-			@include make-col();
-			@include make-col-span(12);
+			@include make-col(12);
 		}
 	}
 
@@ -108,8 +107,7 @@ $gravity-inline-inputs: false !default;
 		@include make-row();
 
 		> span {
-			@include make-col();
-			@include make-col-span(8);
+			@include make-col(8);
 		}
 	}
 
@@ -117,16 +115,14 @@ $gravity-inline-inputs: false !default;
 		@include make-row();
 
 		> span {
-			@include make-col();
-			@include make-col-span(6);
+			@include make-col(6);
 		}
 	}
 }
 
 // Custom Form Elements
 .gform_wrapper {
-
 	.gfield_select {
-		@extend .c-select;
+		@extend .custom-select;
 	}
 }
