@@ -52,7 +52,7 @@ img {
 // Blog
 // Read more link
 .more-link {
-	@extend .btn, .btn-primary-outline;
+	@extend .btn, .btn-outline-primary;
 	margin-top: $spacer;
 }
 
