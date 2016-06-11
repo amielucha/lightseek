@@ -68,7 +68,7 @@ register_nav_menus( $menusArray );
 function google_hosted_jquery() {
 	if (!is_admin()) {
 		wp_deregister_script('jquery');
-		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, '1.11.3');
+		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', false, '1.11.3');
 		wp_enqueue_script('jquery');
 	}
 }
@@ -83,7 +83,7 @@ function lightseek_scripts() {
 
 	// Web Font Loader
 	// https://github.com/typekit/webfontloader
-	wp_enqueue_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js', array(), '1.5.18', true );
+	wp_enqueue_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array(), '1.6.16', true );
 
 	// FitVids
 	wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), '20160206', true );
