@@ -143,39 +143,39 @@ p > video {
 	margin-bottom: 2*$spacer;
 
 	.gallery-item {
-		@include make-col;
+		//@include make-col;
 	}
 
 	&.gallery-columns-1 .gallery-item {
-		@include make-col-span(1, 1);
+		@include make-col(1, 1);
 	}
 
 	&.gallery-columns-2 .gallery-item {
-		@include make-col-span(1, 2);
+		@include make-col(1, 2);
 	}
 
 	&.gallery-columns-3 .gallery-item {
-		@include make-col-span(1, 3);
+		@include make-col(1, 3);
 	}
 
 	&.gallery-columns-4 .gallery-item {
-		@include make-col-span(1, 4);
+		@include make-col(1, 4);
 	}
 
 	&.gallery-columns-5 .gallery-item {
-		@include make-col-span(1, 5);
+		@include make-col(1, 5);
 	}
 
 	&.gallery-columns-6 .gallery-item {
-		@include make-col-span(1, 6);
+		@include make-col(1, 6);
 	}
 
 	&.gallery-columns-7 .gallery-item {
-		@include make-col-span(1, 7);
+		@include make-col(1, 7);
 	}
 
 	&.gallery-columns-8 .gallery-item {
-		@include make-col-span(1, 8);
+		@include make-col(1, 8);
 	}
 }
 
