@@ -72,7 +72,7 @@ function google_hosted_jquery() {
 		wp_enqueue_script('jquery');
 	}
 }
-add_action('init', 'google_hosted_jquery');
+add_action('wp_enqueue_scripts', 'google_hosted_jquery');
 
 /**
  * Enqueue scripts and styles.
