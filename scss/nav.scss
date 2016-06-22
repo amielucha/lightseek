@@ -1,3 +1,16 @@
+// Variables
+$nav-text-color:			#fff !default;
+$nav-text-color-hover:		darken($nav-text-color, 7%) !default;
+$nav-text-color-current:	darken($nav-text-color, 9%) !default;
+
+$nav-item-bg:				$brand-primary !default;
+$nav-item-bg-hover:			darken($nav-item-bg, 7%) !default;
+$nav-item-bg-current:		darken($nav-item-bg, 9%) !default;
+
+$nav-item-padding:			.5rem 1rem !default;
+
+$nav-dropdown-bg:			rgba($gray-dark, .8)!default;
+
 // Main Nav
 .menu-item-has-children {
 	@extend .dropdown;
@@ -31,7 +44,7 @@
 		&:focus {
 			> .nav-link {
 				background-color: $gray-lightest;
-		    color: $gray;
+		    	color: $gray;
 		    text-decoration: none;
 			}
 		}
@@ -79,18 +92,21 @@
 	.nav {
 		> .nav-item {
 			> .nav-link {
-				padding: 23px $spacer * 2;
+				padding: $nav-item-padding;
+
 				//border-left: 1px solid $gray-light;
 				//border-right: 1px solid $gray-light;
-				color: $gray;
+				//color: $gray;
+				color: $nav-text-color;
+				background-color: $nav-item-bg;
 			}
 
 			&:hover,
 			&:focus {
 				> .nav-link {
-					background-color: $gray-lightest;
-			    color: $gray;
-			    text-decoration: none;
+					color: $nav-text-color-hover;
+					background-color: $nav-item-bg-hover;
+			    	text-decoration: none;
 				}
 			}
 		}
@@ -111,15 +127,15 @@
 		&.current_page_parent,
 		&.current-menu-item {
 			> .nav-link {
-				color: #fff;
-				background-color: $brand-primary;
+				color: $nav-text-color-current;
+				background-color: $nav-item-bg-current;
 			}
 
 			&:hover,
 			&:focus {
 				> .nav-link {
-					color: #fff;
-					background-color: darken($brand-primary, 15%);
+					color: $nav-text-color-hover;
+					background-color: $nav-item-bg-hover;
 				}
 			}
 		}
