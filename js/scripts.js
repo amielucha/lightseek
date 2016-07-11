@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
 WebFont.load({
   google: {
-    families: ['Biryani:400,700,800,300,600'],
+    families: ['Open+Sans:400,400italic,600,600italic,700,700italic:latin'],
     //text: 'abcdedfghijklmopqrstuvwxyz!'
   }
 });
