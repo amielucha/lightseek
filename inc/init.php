@@ -49,7 +49,7 @@ if ( ! function_exists( 'lightseek_theme_setup' ) ) {
  * Register Font Awesome
  */
 function wpb_add_font_awesome() {
-	wp_register_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+	wp_register_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
 	wp_enqueue_style( 'font-awesome');
 }
 add_action('wp_print_styles', 'wpb_add_font_awesome');
