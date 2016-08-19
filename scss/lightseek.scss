@@ -47,6 +47,10 @@ img {
 
 .footer-widgets-wrapper {
 	padding: $spacer 0;
+
+	.menu {
+		@extend .nav;
+	}
 }
 
 // Blog
