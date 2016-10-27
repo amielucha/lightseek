@@ -28,22 +28,24 @@ add_action( 'wp_print_styles', 'pagenavi_deregister_styles', 100 );
 
 
 //customize the PageNavi HTML before it is output
-function ik_pagination($html) {
+function lightseek_pagination($html) {
   $out = '';
 
   //wrap a's and span's in li's
   $out = str_replace("<div","",$html);
   $out = str_replace("class='wp-pagenavi'>","",$out);
-  $out = str_replace("<a","<li><a",$out);
+  $out = str_replace("<a","<li class='page-item'><a",$out);
   $out = str_replace("</a>","</a></li>",$out);
-  $out = str_replace("<span","<li><span",$out);
+  $out = str_replace("<span","<li class='page-item'><span",$out);
   $out = str_replace("</span>","</span></li>",$out);
   $out = str_replace("</div>","",$out);
-	$out = str_replace("<li><span class='current'>","<li class='disabled'><span class='current'>",$out);
+  $out = str_replace("<a class=\"","<a class=\"page-link ",$out);
+	$out = str_replace("<li class='page-item'><span class='current'>","<li class='disabled page-item'><span class='page-link current'>",$out);
+  $out = str_replace("pages","pages page-link",$out);
 
   return '<nav class="pagination-nav text-center"><ul class="pagination">'.$out.'</ul></nav>';
 }
-add_filter( 'wp_pagenavi', 'ik_pagination', 10, 2 );
+add_filter( 'wp_pagenavi', 'lightseek_pagination', 10, 2 );
 
 
 // Replace post navigation html
