@@ -35,14 +35,19 @@ gulp.task('default', function(){
 
 // build without minification
 gulp.task('dev', function(){
-  return gulp.src('./style.scss')
-	  .pipe(sourcemaps.init())
-	  .pipe(sass().on('error', sass.logError))
-	  .pipe(autoprefixer({
+  var processors = [
+    autoprefixer({
         browsers: ['last 2 versions'],
         cascade: false
-    }))
-	  .pipe(sourcemaps.write('./'))
+    }),
+    flexbug(),
+  ];
+
+  return gulp.src('./style.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./'))
 });
 
