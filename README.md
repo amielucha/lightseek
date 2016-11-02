@@ -1,4 +1,4 @@
-Lightseek is a starter WordPress theme we are using at [iSeek](http://www.iseek.ie/).
+Lightseek is a starter WordPress theme we use at [iSeek](http://www.iseek.ie/).
 
 ## Installation
 
