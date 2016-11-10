@@ -1,6 +1,6 @@
 /* Configure FTP */
 //
-const rootFolder = 'beta.darcyshairdressing.ie'; // example: 'website.com'
+const rootFolder = ''; // example: 'website.com'
 const hostName = 'web2.darklite.ie';
 /* #Configure FTP */
 
@@ -22,11 +22,12 @@ const ftp = require('vinyl-ftp');
 const sass = require('gulp-sass');
 const gutil = require('gulp-util');
 const cssnano = require('cssnano');
+const notify = require('gulp-notify');
+const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const flexbug = require('postcss-flexbugs-fixes');
-
 
 // helper function to build an FTP connection based on our configuration
 function getFtpConnection() {
@@ -54,6 +55,7 @@ gulp.task('default', function(){
 
   return gulp.src('./style.scss')
 	  .pipe(sourcemaps.init())
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 	  .pipe(sass().on('error', sass.logError))
 	  .pipe(postcss(processors))
 	  .pipe(sourcemaps.write('./'))
@@ -72,6 +74,7 @@ gulp.task('dev', function(){
 
   return gulp.src('./style.scss')
     .pipe(sourcemaps.init())
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('./'))
@@ -89,6 +92,7 @@ gulp.task('upload-dev', ['dev'], function(){
   console.log('Changes detected! Uploading file');
 
   return gulp.src( localFilesUpload, { base: '.', buffer: false } )
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe( conn.newer( remoteFolder ) ) // only upload newer files
     .pipe( conn.dest( remoteFolder ) );
 });
@@ -99,6 +103,7 @@ gulp.task('upload', ['default'], function(){
   console.log('Changes detected! Uploading file');
 
   return gulp.src( localFilesUpload, { base: '.', buffer: false } )
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe( conn.newer( remoteFolder ) ) // only upload newer files
     .pipe( conn.dest( remoteFolder ) );
 });
