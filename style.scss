@@ -4,20 +4,20 @@ Theme URI: http://iseek.ie/
 Author: Slawek Amielucha
 Author URI: http://amielucha.com/
 Description: iSeek light theme.
-Version: 1.4
+Version: 1.5
 Text Domain: lightseek
 */
 
 // Options
-$enable-flex:						false;
-$grid-columns:						24;
-$enable-rounded:					false;
+$enable-flex:								false;
+$grid-columns:							24;
+$enable-rounded:						false;
 $pager-border-radius:				unset;
 $enable-transitions:				true;
 $body-flex-height:					true;
 
 // Colors
-$brand-primary:             		rebeccapurple;
+$brand-primary:             rebeccapurple;
 
 // Fonts
 $font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -61,9 +61,8 @@ $font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-s
 }
 
 .site-logo-link {
-	display: block;
-	max-width: (512px / 2);
-	//padding: 6px 0;
+	//display: block;
+	//max-width: (512px / 2);
 }
 
 .custom-logo {

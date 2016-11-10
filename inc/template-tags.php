@@ -43,7 +43,7 @@ function lightseek_pagination($html) {
 	$out = str_replace("<li class='page-item'><span class='current'>","<li class='disabled page-item'><span class='page-link current'>",$out);
   $out = str_replace("pages","pages page-link",$out);
 
-  return '<nav class="pagination-nav text-center"><ul class="pagination">'.$out.'</ul></nav>';
+  return '<nav class="pagination-nav text-xs-center"><ul class="pagination">'.$out.'</ul></nav>';
 }
 add_filter( 'wp_pagenavi', 'lightseek_pagination', 10, 2 );
 
