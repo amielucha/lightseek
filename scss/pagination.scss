@@ -1,0 +1,13 @@
+.post-navigation {
+	a {
+		color: $body-color;
+	}
+
+	.pager-prev {
+		float: left;
+	}
+
+	.pager-next {
+		float: right;
+	}
+}
