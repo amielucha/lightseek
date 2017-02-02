@@ -11,6 +11,12 @@ $nav-item-padding:			.5rem 1rem !default;
 
 $nav-dropdown-bg:			rgba($gray-dark, .8)!default;
 
+@include media-breakpoint-up(md) {
+	.navbar-nav {
+		flex-direction: initial;
+	}
+}
+
 // Main Nav
 .menu-item-has-children {
 	@extend .dropdown;

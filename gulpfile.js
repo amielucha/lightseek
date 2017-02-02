@@ -12,7 +12,7 @@ const password =  process.env.FTP_PWD || '';
 const host = process.env.FTP_HOST || hostName;
 const remoteFolder ='/' + rootFolder + '/wp-content/themes/lightseek/';
 const port = 21;
-const localFilesGlob = ['./*', './fonts/*', './images/*', './inc/*', './js/*', './modules/*', './scss/*', '!./*.{css,map,js}' ];
+const localFilesGlob = ['./*', './fonts/*', './images/*', './inc/*', './js/src/*', './modules/*', './scss/*', '!./*.{css,map,js}' ];
 const localFilesUpload = ['./*', './fonts/*', './images/*', './inc/*', './js/*', './modules/*', './scss/*', '!./*.{js}' ];
 
 
@@ -22,12 +22,17 @@ const ftp = require('vinyl-ftp');
 const sass = require('gulp-sass');
 const gutil = require('gulp-util');
 const cssnano = require('cssnano');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const flexbug = require('postcss-flexbugs-fixes');
+
 
 // helper function to build an FTP connection based on our configuration
 function getFtpConnection() {
@@ -43,7 +48,7 @@ function getFtpConnection() {
 
 
 // Full build
-gulp.task('default', function(){
+gulp.task('default', ['js'],  function(){
   var processors = [
     autoprefixer({
         browsers: ['last 2 versions'],
@@ -54,11 +59,11 @@ gulp.task('default', function(){
   ];
 
   return gulp.src('./style.scss')
-	  .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-	  .pipe(sass().on('error', sass.logError))
-	  .pipe(postcss(processors))
-	  .pipe(sourcemaps.write('./'))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./'))
 });
 
@@ -81,9 +86,37 @@ gulp.task('dev', function(){
     .pipe(gulp.dest('./'))
 });
 
+// ES2015
+gulp.task('js', function () {
+  const jsFiles = [
+    // './js/src/bootstrap/alert.js,
+    // './js/src/bootstrap/button.js,
+    // './js/src/bootstrap/carousel.js,
+    // './js/src/bootstrap/collapse.js,
+    // './js/src/bootstrap/dropdown.js,
+    // './js/src/bootstrap/modal.js,
+    // './js/src/bootstrap/popover.js,
+    // './js/src/bootstrap/scrollspy.js,
+    // './js/src/bootstrap/tab.js,
+    // './js/src/bootstrap/tooltip.js,
+    // './js/src/bootstrap/util.js,
+    './js/src/jquery.fitvids.js',
+    './js/src/scripts.js'
+  ];
+
+  return gulp.src(jsFiles)
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(babel())
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./js/'));
+});
+
 // Local watch - dev
 gulp.task('watch', function(){
-  gulp.watch('./style.scss', ['dev']);
+  gulp.watch(localFilesGlob, ['dev']);
 });
 
 // Upload via FTP - dev

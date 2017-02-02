@@ -65,7 +65,7 @@ switch ( $footer_widget_count ) {
 		<div id="colophon" class="site-footer container" role="contentinfo">
 			<div class="site-info">
 				<p>&copy; Copyright <?php echo date('Y') ?> <?php bloginfo('name'); ?>. All rights Reserved.</p>
-				<?php printf( __('<a href="%1$s" title="%2$s" target="_blank" class="iseek-link">%3$s <span id="iseek-replace" class="iseek-replace">iSeek.ie</span></a>', 'baseek'), 'http://www.iseek.ie', 'Seek Internet Solutions, Fermoy, Cork, Ireland', 'Website Crafted by ' ); ?>
+				<?php printf( __('<a href="%1$s" title="%2$s" target="_blank" class="iseek-link">%3$s <span id="iseek-replace" class="iseek-replace">iSeek.ie</span></a>', 'lightseek'), 'http://www.iseek.ie', 'Seek Internet Solutions, Fermoy, Cork, Ireland', 'Website Crafted by ' ); ?>
 			</div><!-- .site-info -->
 		</div><!-- #colophon -->
 	</div>
