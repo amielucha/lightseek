@@ -22,7 +22,6 @@ a,
 .btn {
 	@include animate();
 	@include animate-property((background-color, color));
-
 }
 
 // Images
@@ -64,19 +63,23 @@ img {
 // Blog
 // Read more link
 .more-link {
-	@extend .btn, .btn-outline-primary;
+	//@extend .btn, .btn-outline-primary;
 	margin-top: $spacer;
+	display: block;
 }
 
 // iSeek logo
-.iseek-replace {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 2px;
-  height: 2rem;
-  width: auto;
-  background: url(images/iseek-white.svg) left top no-repeat;
-  color: rgba(0, 0, 1, 0);
+.iseek-link {
+	text-decoration: none;
+
+	@include hover-focus {
+		text-decoration: none;
+	}
+}
+
+.the-iseek-logo {
+	height: 1.33em;
+	fill: currentColor;
 }
 
 // Pagination
@@ -174,4 +177,10 @@ img {
 			text-align: center;
 		}
 	}
+}
+
+// Site header with a background
+.site-header {
+	background-size: cover;
+	background-position: center center;
 }

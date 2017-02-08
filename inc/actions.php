@@ -9,6 +9,7 @@
  * * lightseek_homepage_content
  * * lightseek_homepage_after_content
  *
+ * * lightseek_header_bg
  * * lightseek_header
  *
  * * lightseek_footer_widgets
@@ -26,12 +27,12 @@
 add_action('lightseek_homepage_content', 'the_content', 10);
 
 /* Header */
+add_action('lightseek_header_bg', 'lightseek_header_bg', 10);
 add_action('lightseek_header', 'lightseek_site_branding', 10);
 add_action('lightseek_header', 'lightseek_primary_nav', 20);
 add_action('lightseek_header', 'lightseek_header_title', 30);
 
 /* Footer */
-add_action('lightseek_footer_widgets', 'lightseek_footer_logo', 7);
 add_action('lightseek_footer_widgets', 'lightseek_footer_nav', 10);
 add_action('lightseek_footer_widgets', 'lightseek_footer_render_widgets', 20);
 
@@ -81,6 +82,13 @@ function dfmg_home_awards() {
 }
 
 /* Header */
+function lightseek_header_bg() {
+	if ( !SeekConfig::ENABLE_CUSTOM_HEADER )
+		break;
+
+	echo 'style="background-image: url(' . get_header_image() . ')"';
+}
+
 function lightseek_site_branding() {
 	?>
 
@@ -131,11 +139,6 @@ function lightseek_header_title() {
 }
 
 /* Footer */
-function lightseek_footer_logo() {
-	if ( function_exists( 'the_custom_logo' ) )
-		the_custom_logo();
-}
-
 function lightseek_footer_nav() {
 	if ( has_nav_menu( 'footer' ) ){
 		echo '<div class="main-navigation footer-menu">';

@@ -23,7 +23,10 @@
 	<?php if ( SeekConfig::TOPBAR )
 		get_template_part( 'modules/topbar', 'default' );
 	?>
-	<?php get_template_part( 'modules/header', 'default' ); // default, split ?>
+
+	<header class="site-header" <?php do_action('lightseek_header_bg') ?>>
+		<?php do_action('lightseek_header') ?>
+	</header>
 
 <div id="page-wrapper" class="page-wrapper">
 	<div id="page" class="hfeed site">
