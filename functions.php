@@ -9,9 +9,12 @@
 Class SeekConfig {
 	const TOPBAR = true;
 	const SIDEBAR = true;
+	const SIDEBAR_ON_PAGES = false;
 	const SIDEBAR_W = 8;
 	const FOOTER_WIDGETS_COUNT = 4;
 	const FOOTER_MENU = true;
+	const ENABLE_CUSTOM_HEADER = false;
+	const JQUERY_VERSION = 2; // 1, 2, 3
 }
 
 //Template setup
@@ -68,9 +71,19 @@ register_nav_menus( $menusArray );
 function google_hosted_jquery() {
 	if (!is_admin()) {
 		wp_deregister_script('jquery');
-		//wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', false, null);
-		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', false, null);
-		//wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', false, null);
+
+		switch ( SeekConfig::JQUERY_VERSION ) {
+			case 1:
+				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', false, null);
+				break;
+			case 3:
+				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', false, null);
+				break;
+			default:
+				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', false, null);
+				break;
+		}
+
 		wp_enqueue_script('jquery');
 	}
 }
@@ -93,6 +106,17 @@ function lightseek_scripts() {
 add_action( 'wp_enqueue_scripts', 'lightseek_scripts' );
 
 /**
+ * defer/async scripts.
+ */
+function add_defer_attribute($tag, $handle) {
+    if ( 'scripts' !== $handle )
+        return $tag;
+    return str_replace( ' src', ' defer="defer" src', $tag );
+}
+add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+
+
+/**
  * Advanced Image Compression
  * https://github.com/ResponsiveImagesCG/wp-tevko-responsive-images
  */
@@ -100,3 +124,25 @@ function advanced_image_compression() {
     add_theme_support( 'advanced-image-compression' );
 }
 add_action( 'after_setup_theme', 'advanced_image_compression' );
+
+/**
+ * Custom Header
+ */
+function lightseek_add_header_support() {
+	add_theme_support( 'custom-header', array(
+		'header-text'            => false,
+
+		'default-image'          => get_template_directory_uri() . '/images/header.jpg',
+		'width'                  => 1920,
+		'height'                 => 640,
+		'flex-height'            => false,
+		'flex-width'             => false,
+		'uploads'                => true,
+	) );
+}
+
+if ( SeekConfig::ENABLE_CUSTOM_HEADER )
+	add_action( 'after_setup_theme', 'lightseek_add_header_support' );
+
+// Actions
+require get_template_directory() . '/inc/actions.php';
