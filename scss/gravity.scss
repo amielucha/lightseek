@@ -38,7 +38,7 @@ $gravity-inline-inputs: false !default;
 			@if $gravity-inline-inputs {
 			  @extend .form-check-inline;
 			} @else {
-				@extend .radio;
+				@extend .form-check;
 			}
 			list-style: none;
 		}
@@ -49,7 +49,7 @@ $gravity-inline-inputs: false !default;
 			@if $gravity-inline-inputs {
 			  @extend .form-check-inline;
 			} @else {
-				@extend .checkbox;
+				@extend .form-check;
 			}
 		}
 	}
