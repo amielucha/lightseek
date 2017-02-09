@@ -15,6 +15,7 @@ Class SeekConfig {
 	const FOOTER_MENU = true;
 	const ENABLE_CUSTOM_HEADER = false;
 	const JQUERY_VERSION = 2; // 1, 2, 3
+	const MENU_STYLE = 'inline'; // null, 'inline'
 }
 
 //Template setup
@@ -98,7 +99,10 @@ function lightseek_scripts() {
 
 	// Web Font Loader
 	// https://github.com/typekit/webfontloader
-	wp_enqueue_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), null, true );
+	wp_enqueue_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), null );
+
+	// Font Awesome async
+	wp_enqueue_script( 'fa', 'https://use.fontawesome.com/0581ebd445.js', array(), null );
 
 	// Main Script
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/main.min.js', array( 'jquery', 'webfont' ), '20170202', true );
@@ -109,11 +113,18 @@ add_action( 'wp_enqueue_scripts', 'lightseek_scripts' );
  * defer/async scripts.
  */
 function add_defer_attribute($tag, $handle) {
-    if ( 'scripts' !== $handle )
+    if ( 'webfont' !== $handle && 'scripts' !== $handle )
         return $tag;
-    return str_replace( ' src', ' defer="defer" src', $tag );
+    return str_replace( ' src', ' defer src', $tag );
 }
 add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+
+function add_async_attribute($tag, $handle) {
+    if ( 'fa' !== $handle )
+        return $tag;
+    return str_replace( ' src', ' async src', $tag );
+}
+add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
 
 
 /**
@@ -134,7 +145,7 @@ function lightseek_add_header_support() {
 
 		'default-image'          => get_template_directory_uri() . '/images/header.jpg',
 		'width'                  => 1920,
-		'height'                 => 640,
+		'height'                 => 760,
 		'flex-height'            => false,
 		'flex-width'             => false,
 		'uploads'                => true,

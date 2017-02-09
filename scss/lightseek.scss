@@ -1,5 +1,11 @@
 // Options
 $body-flex-height: true !default;
+$font-size-root: inherit !default;
+
+// Typography
+:root {
+  font-size: $font-size-root;
+}
 
 // Typography
 .entry-title {
@@ -57,6 +63,7 @@ img {
 
 	.menu {
 		@extend .nav;
+		flex-direction: column;
 	}
 }
 
