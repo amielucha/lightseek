@@ -42,6 +42,7 @@ function lightseek_pagination($html) {
   $out = str_replace("<a class=\"","<a class=\"page-link ",$out);
 	$out = str_replace("<li class='page-item'><span class='current'>","<li class='disabled page-item'><span class='page-link current'>",$out);
   $out = str_replace("pages","pages page-link",$out);
+  $out = str_replace("extend","extend page-link",$out);
 
   return '<nav class="pagination-nav text-xs-center"><ul class="pagination">'.$out.'</ul></nav>';
 }
