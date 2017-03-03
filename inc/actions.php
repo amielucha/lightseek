@@ -84,7 +84,7 @@ function dfmg_home_awards() {
 /* Header */
 function lightseek_header_bg() {
 	if ( !SeekConfig::ENABLE_CUSTOM_HEADER )
-		break;
+		return;
 
 	echo 'style="background-image: url(' . get_header_image() . ')"';
 }
