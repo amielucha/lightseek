@@ -55,32 +55,6 @@ function lightseek_homepage_header() {
 	echo '</header>';
 }
 
-/* Awards */
-function lightseek_awards_header() {
-	the_title( '<h1 class="h5 mb-3">', '</h1>' );
-}
-
-function dfmg_home_awards() {
-	echo '<section class="home-awards-section mb-5">';
-		echo '<h2 class="h1 text-center mb-5 mt-5">Awards</h2>';
-
-		$args = array( 'cat' => 1, 'posts_per_page' => 4 );
-		$query = new WP_Query( $args );
-
-		echo '<div class="home-awards-content">';
-			if ( $query->have_posts() ) {
-				while ( $query->have_posts() ) {
-					$query->the_post();
-					get_template_part( 'modules/content', 'award' );
-				}
-
-				echo '<p><a class="full-list-link" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">Full list &gt;&gt;</a>';
-			}
-		echo '</div>';
-
-	echo '</section>';
-}
-
 /* Header */
 function lightseek_header_bg() {
 	if ( !SeekConfig::ENABLE_CUSTOM_HEADER )
