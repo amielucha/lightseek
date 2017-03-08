@@ -25,6 +25,8 @@
 /* Homepage */
 //add_action('lightseek_homepage_header', 'lightseek_homepage_header', 10);
 add_action('lightseek_homepage_content', 'the_content', 10);
+//add_action('lightseek_homepage_content', 'lightseek_homepage_content_text', 50);
+add_action('lightseek_homepage_content', 'lightseek_homepage_sections', 50);
 
 /* Header */
 add_action('lightseek_header_bg', 'lightseek_header_bg', 10);
@@ -53,6 +55,16 @@ function lightseek_homepage_header() {
 	echo '<header class="entry-header">';
 		lightseek_post_header();
 	echo '</header>';
+}
+
+function lightseek_homepage_content_text() {
+	if ( SeekConfig::FRONT_PAGE_SECTIONS )
+		lightseek_front_page_section( null, 1 ); // display first section
+}
+
+function lightseek_homepage_sections() {
+	if ( SeekConfig::FRONT_PAGE_SECTIONS )
+		lightseek_display_all_custom_panels();
 }
 
 /* Header */

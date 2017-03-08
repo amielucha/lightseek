@@ -15,6 +15,8 @@ Class SeekConfig {
 	const FOOTER_MENU = true;
 	const ENABLE_CUSTOM_HEADER = false;
 	const JQUERY_VERSION = 2; // 1, 2, 3
+	const FRONT_PAGE_SECTIONS = 2; // 0, 1, 2, 3, 4...
+	const READ_MORE_BUTTON = false;
 	const MENU_STYLE = 'inline'; // null, 'inline'
 }
 
@@ -26,6 +28,10 @@ require get_template_directory() . '/inc/nav.php';
 
 //Template Tags
 require get_template_directory() . '/inc/template-tags.php';
+
+// Front Page Sections
+if ( SeekConfig::FRONT_PAGE_SECTIONS )
+	require get_template_directory() . '/inc/front-page-sections.php';
 
 //TinyMCE extension
 require get_template_directory() . '/inc/tiny-mce.php';
@@ -154,6 +160,15 @@ function lightseek_add_header_support() {
 
 if ( SeekConfig::ENABLE_CUSTOM_HEADER )
 	add_action( 'after_setup_theme', 'lightseek_add_header_support' );
+
+// Display Read More on new line as a button
+function lightseek_read_more_link() {
+	return '<p><a class="btn btn-primary" href="' . get_permalink() . '">Read More</a></p>';
+}
+
+if ( SeekConfig::READ_MORE_BUTTON )
+	add_filter( 'the_content_more_link', 'lightseek_read_more_link' );
+
 
 // Actions
 require get_template_directory() . '/inc/actions.php';
