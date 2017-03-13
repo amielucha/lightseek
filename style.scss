@@ -4,7 +4,7 @@ Theme URI: http://iseek.ie/
 Author: Slawek Amielucha
 Author URI: https://amielucha.com/
 Description: iSeek light theme.
-Version: 1.7
+Version: 1.7.1
 Text Domain: lightseek
 */
 
@@ -24,7 +24,7 @@ $brand-primary:             rebeccapurple;
 
 @import "scss/bootstrap/bootstrap-lightseek";
 @import "scss/mixins";
-@import "scss/nav";
+@import "scss/nav-simple";
 @import "scss/nav-mobile";
 
 // IE flex fix

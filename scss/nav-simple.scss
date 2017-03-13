@@ -1,0 +1,205 @@
+// Variables
+$nav-text-color:          inherit !default;
+$nav-text-color-hover:    inherit !default;
+$nav-text-color-current:  inherit !default;
+
+$nav-item-bg:           transparent !default;
+$nav-item-bg-hover:     transparent !default;
+$nav-item-bg-current:   transparent !default;
+
+$nav-item-padding:      .5rem 1rem !default;
+$nav-dropdown-bg:       rgba($gray-dark, .8)!default;
+
+$subnav-color:          #fff!default;
+$subnav-bg:             $brand-primary!default;
+
+
+@include media-breakpoint-up(md) {
+  .navbar-nav {
+    flex-direction: initial;
+  }
+}
+
+// Main Nav
+.menu-item-has-children {
+  @extend .dropdown;
+
+  &:hover,
+  &:active {
+    @extend .open;
+  }
+}
+
+// All items
+.site-branding .navbar {
+  .nav-item {
+    &.current_page_parent,
+    &.current-menu-item {
+      > .nav-link {
+        color: $nav-text-color-current;
+        background-color: $nav-item-bg-current;
+      }
+
+      &:hover,
+      &:focus {
+        > .nav-link {
+          color: $nav-text-color-hover;
+          background-color: $nav-item-bg-hover;
+        }
+      }
+    }
+  }
+}
+
+// 1st level only
+.main-navigation.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .nav {
+    > .nav-item {
+      > .nav-link {
+        padding: $nav-item-padding;
+        color: $nav-text-color;
+        background-color: $nav-item-bg;
+      }
+
+      &:hover,
+      &:focus {
+        > .nav-link {
+          color: $nav-text-color-hover;
+          background-color: $nav-item-bg-hover;
+            text-decoration: none;
+        }
+      }
+    }
+
+    .nav-item + .nav-item {
+      margin-left: 0;
+
+      > .nav-link {
+        border-left: none;
+      }
+    }
+  }
+}
+
+// Menu Toggle
+.menu-toggle {
+  position: absolute;
+}
+
+.menu-toggle-label {
+  @extend .btn;
+}
+
+@include media-breakpoint-down(sm) {
+
+  .menu-toggle + .nav-menu-container {
+    display: none;
+  }
+
+  .menu-toggle:checked + .nav-menu-container {
+    display: block;
+  }
+}
+
+
+// Sub menu
+.sub-menu {
+  @extend .dropdown-menu;
+  margin-top: 0;
+  padding: 0;
+
+  .nav-item, .nav-item + .nav-item {
+    margin-left: 0;
+    float: none;
+    position: relative;
+
+    .nav-link {
+      @extend .dropdown-item;
+      display: block;
+      white-space: normal;
+      padding: $spacer * .5;
+      color: $subnav-color;
+      background-color: $subnav-bg;
+    }
+
+    &.current-menu-item,
+    &.current-menu-item:hover,
+    &.current-menu-item:focus,
+    &:hover,
+    &:focus {
+      > .nav-link {
+        text-decoration: none;
+        color: $subnav-color;
+        background-color: darken($subnav-bg, 6%);
+      }
+    }
+  }
+
+  > .nav-item {
+    position: relative;
+
+    // 3rd+ level menu enhancement.
+    //   Increases the hover area when moving the cursor
+    //   so the sub-sub-menu doesn't hide by accident.
+    &.menu-item-has-children:hover:after {
+      $size: 5rem;
+      content: '';
+      width: $size;
+      height: $size * 2;
+      position: absolute;
+      display: block;
+      z-index: 1;
+      left: 56%;
+      top: 50%;
+      transform-origin: left top;
+      transform: rotate(-25deg);
+
+      // Debug helper:
+      //background: rgba(0,0,0,.3);
+    }
+  }
+
+  .sub-menu {
+    left: 100%;
+    top: 0;
+
+    .nav-item:after {
+      display: none;
+    }
+  }
+}
+
+.menu-item-has-children {
+  @include hover-focus {
+    > .sub-menu {
+      display: block;
+    }
+  }
+}
+
+.widget_nav_menu {
+  .sub-menu {
+    display: none!important;
+  }
+}
+
+.footer-menu {
+  .nav-link {
+    padding: .5rem;
+    margin-bottom: .5rem;
+  }
+}
+
+// IE Fix
+@include media-breakpoint-up(md) {
+  #primary-menu {
+    display: block;
+
+    > .menu-item {
+      display: inline-block;
+    }
+  }
+}
