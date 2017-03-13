@@ -16,7 +16,7 @@ Class SeekConfig {
 	const ENABLE_CUSTOM_HEADER = false;
 	const JQUERY_VERSION = 2; // 1, 2, 3
 	const FRONT_PAGE_SECTIONS = 2; // 0, 1, 2, 3, 4...
-	const READ_MORE_BUTTON = false;
+	const READ_MORE_BUTTON = true;
 	const MENU_STYLE = 'inline'; // null, 'inline'
 }
 
