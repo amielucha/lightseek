@@ -17,6 +17,7 @@
 	    z-index: $zindex-modal;
 	    margin-left: 0!important;
 	    margin-top: 0!important;
+	    overflow-x: auto;
 
 	   	.nav-item > .nav-link {
 	   		font-size: 1.3rem;
