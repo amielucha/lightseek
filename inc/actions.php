@@ -42,9 +42,6 @@ add_action('lightseek_footer_widgets', 'lightseek_footer_render_widgets', 20);
 add_action('lightseek_footer_siteinfo', 'lightseek_copyright', 40);
 add_action('lightseek_footer_siteinfo', 'lightseek_designed_by', 80);
 
-/* Posts (Awards) */
-add_action('lightseek_awards_header', 'lightseek_awards_header', 10);
-
 /*
  *
  * Functions

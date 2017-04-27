@@ -4,7 +4,7 @@
 		width: 100%;
 
 		// Mobile menu
-		@include media-breakpoint-down(md) {
+		@include media-breakpoint-down(sm) {
 			align-items: center;
 	    background: darken(rgba($brand-primary, .9), 10%);
 	    bottom: 0;
