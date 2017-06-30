@@ -8,17 +8,20 @@ jQuery(document).ready( ($) => {
       return;
 
     let timeout;
+    // cache initial pointer-events property
+    const pointerState = $maps.css('pointer-events');
 
     $(document).scroll((event) => {
       //console.log('scrolled', event);
 
-      // Add class and remove it once scrolling stops
-      $maps.addClass('donotscroll');
+      // remove pointer events
+      $maps.css('pointer-events', 'none');
 
       clearTimeout(timeout);
 
       timeout = setTimeout(() => {
-        $maps.removeClass('donotscroll')
+        // restore pointer events
+        $maps.css('pointer-events', pointerState);
       }, 500);
     })
   })($maps);
