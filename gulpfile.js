@@ -102,6 +102,7 @@ gulp.task('js', function () {
     // './js/src/bootstrap/tooltip.js,
     // './js/src/bootstrap/util.js,
     //'./js/src/jquery.fitvids.js',
+    //'./js/src/maps.noscroll.js',
     './js/src/scripts.js'
   ];
 
@@ -118,6 +119,11 @@ gulp.task('js', function () {
 // Local watch - dev
 gulp.task('watch', function(){
   gulp.watch(localFilesGlob, ['dev']);
+});
+
+// Local watch - full build
+gulp.task('watch-full', function(){
+  gulp.watch(localFilesGlob, ['default']);
 });
 
 // Upload via FTP - dev

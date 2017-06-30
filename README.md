@@ -32,3 +32,5 @@ To configure the FTP connection under Windows set `FTP_HOST`, `FTP_USER` and `FT
 ````set FTP_HOST=web.darklite.ie & set FTP_USER=username & FTP_PWD=password123 & gulp ftp-watch```
 
 You should also configure `rootFolder` and (alternative for FTP_HOST variable) `hostName` in `gulpfile.js`.
+
+Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that builds the full application on save incl. minifying.
