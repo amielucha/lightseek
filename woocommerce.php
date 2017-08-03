@@ -5,11 +5,10 @@
  * @package lightseek
  */
 
-get_header(); ?>
-<div id="primary" class="content-area">
-	<main id="main" class="site-main container" role="main">
-		<?php woocommerce_content(); ?>
-	</main><!-- #main -->
-</div><!-- #primary -->
-
-<?php get_footer();
+get_header();
+do_action('lightseek_template_start');
+?>
+	<?php woocommerce_content(); ?>
+<?php
+do_action('lightseek_template_end');
+get_footer();

@@ -52,9 +52,9 @@ if ( ! isset( $content_width ) )
 if ( ! function_exists( 'lightseek_image_sizes' ) ) {
 	function lightseek_image_sizes() {
 		set_post_thumbnail_size( 1110, 420, array( 'center', 'center') ); // 16:9
-		add_image_size('large-img', 1920, 800);
-		add_image_size('medium-img', 860, 400);
-		add_image_size('small-img', 640, 267);
+		//add_image_size('large-img', 1920, 800);
+		//add_image_size('medium-img', 860, 400);
+		//add_image_size('small-img', 640, 267);
 	}
 	add_action( 'after_setup_theme', 'lightseek_image_sizes' );
 }
@@ -169,6 +169,9 @@ function lightseek_read_more_link() {
 if ( SeekConfig::READ_MORE_BUTTON )
 	add_filter( 'the_content_more_link', 'lightseek_read_more_link' );
 
+// If we have ACF Pro plugin active, enable Options Page.
+if( function_exists('acf_add_options_page') )
+	acf_add_options_page();
 
 // Actions
 require get_template_directory() . '/inc/actions.php';

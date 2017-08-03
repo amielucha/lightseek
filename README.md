@@ -34,3 +34,9 @@ To configure the FTP connection under Windows set `FTP_HOST`, `FTP_USER` and `FT
 You should also configure `rootFolder` and (alternative for FTP_HOST variable) `hostName` in `gulpfile.js`.
 
 Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that builds the full application on save incl. minifying.
+
+## Changelog
+
+### 1.9.0 (2017-08-03)
+- added opening and closing theme hooks, so all opening/closing tags can be edited in one place: `inc/template-wrappers.php`.
+- fixed IE11 issue when `main` element would not behave as a `.container` despite having the class.

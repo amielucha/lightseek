@@ -14,6 +14,9 @@
  *
  * * lightseek_footer_widgets
  * * lightseek_footer_siteinfo
+ *
+ * * lightseek_template_start
+ * * lightseek_template_end
  */
 
 /*
@@ -32,7 +35,7 @@ add_action('lightseek_homepage_content', 'lightseek_homepage_sections', 50);
 add_action('lightseek_header_bg', 'lightseek_header_bg', 10);
 add_action('lightseek_header', 'lightseek_site_branding', 10);
 add_action('lightseek_header', 'lightseek_primary_nav', 20);
-add_action('lightseek_header', 'lightseek_header_title', 30);
+//add_action('lightseek_header', 'lightseek_header_title', 30);
 
 /* Footer */
 add_action('lightseek_footer_widgets', 'lightseek_footer_nav', 10);
@@ -41,6 +44,14 @@ add_action('lightseek_footer_widgets', 'lightseek_footer_render_widgets', 20);
 /* Colophon */
 add_action('lightseek_footer_siteinfo', 'lightseek_copyright', 40);
 add_action('lightseek_footer_siteinfo', 'lightseek_designed_by', 80);
+
+
+/*
+ * Template opening and closing tags
+ */
+require_once get_template_directory() . '/inc/template-wrappers.php';
+add_action('lightseek_template_start', 'lightseek_template_wrapper_start', 50);
+add_action('lightseek_template_end', 'lightseek_template_wrapper_end', 50);
 
 /*
  *
