@@ -64,6 +64,17 @@ $subnav-bg:             $brand-primary!default;
         background-color: $nav-item-bg;
       }
 
+      &.current_page_parent,
+      &.current-menu-item {
+
+        > .nav-link {
+          padding: $nav-item-padding;
+          color: $nav-text-color-current;
+          background-color: $nav-item-bg-current;
+        }
+      }
+
+
       &:hover,
       &:focus {
         > .nav-link {
