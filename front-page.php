@@ -10,7 +10,7 @@ do_action('lightseek_template_start');
 ?>
 
 	<?php the_post(); ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class('container'); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php do_action('lightseek_homepage_header') ?>
 
 		<div class="entry-content">
