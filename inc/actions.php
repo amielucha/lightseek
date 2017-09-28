@@ -91,8 +91,13 @@ function lightseek_site_branding() {
 			<div class="navbar-header">
 				<div class="site-branding" itemscope itemtype="https://schema.org/logo">
 					<?php if ( function_exists( 'the_custom_logo' ) ) the_custom_logo() ?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></h1>
-					<h2 class="site-description"><?php bloginfo( 'description' ) ?></h2>
+					<?php if ( is_front_page() && is_home() ) : ?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+					<?php else: ?>
+						<p class="site-title h1"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+						<p class="site-description h2"><?php bloginfo( 'description' ); ?></p>
+					<?php endif ?>
 				</div><!-- .site-branding -->
 			</div>
 		</div>
