@@ -1,13 +1,5 @@
 {
-  "presets": [
-    [
-      "es2015",
-      {
-        "modules": false,
-        "loose": true
-      }
-    ]
-  ],
+  "presets": ["env"],
   "plugins": [
     "transform-es2015-modules-strip"
   ]

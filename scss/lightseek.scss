@@ -1,5 +1,6 @@
 // Options
-$body-flex-height: true !default;
+$body-flex-height: false !default;
+$body-grid-height: true !default;
 $font-size-root: inherit !default;
 
 // Typography
@@ -59,8 +60,6 @@ img {
 }
 
 .footer-widgets-wrapper {
-	padding: $spacer 0;
-
 	.menu {
 		@extend .nav;
 		flex-direction: column;
@@ -158,8 +157,35 @@ img {
 	// IE hack
 	// Bug details: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
 	@media screen and (-ms-high-contrast:none) {
-     body { display: block } /* IE10 */
-     }
+    body { display: block } /* IE10 */
+  }
+}
+
+// Grid-based body height
+@if $body-grid-height {
+	@supports (display: grid) {
+	  body {
+	    min-height: 100vh;
+	    display: grid;
+	    grid-template-rows: auto 1fr auto;
+	    grid-template-columns: 1fr;
+	  }
+
+	  .site-header {
+	    grid-row: 1;
+	    grid-column: 1;
+	  }
+
+	  .page-wrapper {
+	    grid-row: 2;
+	    grid-column: 1;
+	  }
+
+	  .footer-wrapper {
+	    grid-row: 3;
+	    grid-column: 1;
+	  }
+	}
 }
 
 // Timestamp

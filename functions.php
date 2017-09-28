@@ -15,7 +15,7 @@ Class SeekConfig {
 	const FOOTER_MENU = true;
 	const ENABLE_CUSTOM_HEADER = false;
 	const JQUERY_VERSION = 2; // 1, 2, 3
-	const FRONT_PAGE_SECTIONS = 2; // 0, 1, 2, 3, 4...
+	const FRONT_PAGE_SECTIONS = 0; // 0, 1, 2, 3, 4...
 	const READ_MORE_BUTTON = true;
 	const MENU_STYLE = 'inline'; // null, 'inline'
 }
@@ -84,7 +84,7 @@ function google_hosted_jquery() {
 				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', false, null);
 				break;
 			case 3:
-				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', false, null);
+				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', false, null);
 				break;
 			default:
 				wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', false, null);
