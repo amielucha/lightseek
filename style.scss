@@ -17,6 +17,10 @@ $enable-transitions:				true;
 $body-flex-height:          false;
 $body-grid-height:					false;
 
+// Primary navigation breakpoints
+$nav-breakpoint:            lg;
+$nav-breakpoint-end:        xl;
+
 // Colors
 $brand-primary:             rebeccapurple;
 
@@ -25,14 +29,14 @@ $brand-primary:             rebeccapurple;
 
 @import "scss/bootstrap/bootstrap-lightseek";
 @import "scss/mixins";
-@import "scss/nav-simple";
-@import "scss/nav-mobile";
 
 // IE flex fix
 @import "scss/ie";
 
 // Lightseek defaults
 @import "scss/lightseek";
+@import "scss/nav-simple";
+@import "scss/nav-mobile";
 @import "scss/wp";
 @import "scss/comments";
 @import "scss/pagination";

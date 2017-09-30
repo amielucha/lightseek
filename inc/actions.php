@@ -109,7 +109,7 @@ function lightseek_site_branding() {
 function lightseek_primary_nav() {
 	?>
 	<nav id="site-navigation" class="main-navigation navbar container" role="navigation">
-		<label for="menu-toggle" class="menu-toggle-label hidden-md-up"><span class="hamburger" aria-hidden="true">&#8801;</span> Menu</label>
+		<label for="menu-toggle" class="menu-toggle-label"><span class="hamburger" aria-hidden="true">&#8801;</span> Menu</label>
 		<input type="checkbox" id="menu-toggle" class="menu-toggle invisible" aria-controls="primary-menu" />
 		<?php if ( has_nav_menu( 'primary' ) ) wp_nav_menu (
 			array (
@@ -125,7 +125,7 @@ function lightseek_primary_nav() {
 }
 
 function lightseek_header_title() {
-	// Displays page title depending on the cotext
+	// Displays page title depending on the context
 	if ( is_front_page() ) {
 		echo '<div class="container h2 page-title">' . get_bloginfo( 'description' ) . '</div>' ;
 	} elseif ( is_home() ) {

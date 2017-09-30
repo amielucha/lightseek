@@ -43,7 +43,7 @@
 }
 
 // Vertical Flex mixin
-.flex-vertical {
+/* .flex-vertical {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,10 +56,10 @@
   .inner-bottom {
     flex-grow: 0;
   }
-}
+} */
 
 // Vertical align using flexbox
-.aligner {
+/* .aligner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,31 +81,4 @@
 .aligner--right {
   justify-content: flex-end;
 }
-
-// Styles
-.fat {
-  font-weight: 800;
-  color: $brand-primary;
-}
-
-.space-it {
-  margin-left: $spacer * .5;
-  margin-right: $spacer * .5;
-}
-
-
-// 3d Transforms
-.box-3d {
-      -webkit-perspective: 300px;
-      -moz-perspective: 300px;
-          -ms-perspective: 300px;
-              perspective: 300px;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-      -ms-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
-.btn-fullwidth {
-  display: block;
-}
+ */
