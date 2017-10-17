@@ -1,7 +1,7 @@
 {
   "name": "lightseek",
-  "version": "1.9.2",
-  "description": "WordPress starting theme.",
+  "version": "1.9.3",
+  "description": "WordPress starter theme.",
   "main": "style.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
     "autoprefixer": "^6.5.1",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
     "babel-preset-env": "^1.6.0",
+    "bootstrap": "^4.0.0-beta",
     "cssnano": "^3.8.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",

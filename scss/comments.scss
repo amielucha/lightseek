@@ -14,14 +14,14 @@
 	}
 
 	.comment-list .children {
-		border-left: 1px solid $gray-lighter;
+		border-left: 1px solid $gray-200;
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
 
 	.comment {
 		padding: 1rem;
-		border-top: 1px solid $gray-lighter;
+		border-top: 1px solid $gray-200;
 
 		&:first-child {
 			border-top: none;
@@ -34,7 +34,7 @@
 
 	.comment-metadata {
 		&, a {
-			color: $gray-light;
+			color: $gray-800;
 			font-size: $font-size-sm;
 		}
 	}
@@ -43,7 +43,7 @@
 .comment-respond {
 	@extend .alert;
 	padding-top: 2rem;
-	background-color: $gray-lightest;
+	background-color: $gray-100;
 
 	.comment-reply-title {
 		@extend .h4;
@@ -52,7 +52,7 @@
 
 	.logged-in-as {
 		&, a {
-			color: $gray-light;
+			color: $gray-800;
 		}
 	}
 

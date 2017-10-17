@@ -22,7 +22,6 @@ You can also watch files for changes. Watch task uses dev mode:
 
 ``` gulp watch ```
 
-
 ## FTP config
 
 Version 1.5 introduces two new watchers that automatically upload changed files via FTP. `ftp-watch` is a develompent task and `ftp-watch-live` is a slower task that includes minifiers.
@@ -38,5 +37,10 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 ## Changelog
 
 ### 1.9.0 (2017-08-03)
+
 - added opening and closing theme hooks, so all opening/closing tags can be edited in one place: `inc/template-wrappers.php`.
 - fixed IE11 issue when `main` element would not behave as a `.container` despite having the class.
+
+### 1.9.3 (2017-10-17)
+
+- Updated Bootstrap to version 4.0-beta. Bootstrap files are no longer shipped with the theme.

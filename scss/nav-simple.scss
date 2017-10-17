@@ -8,7 +8,7 @@ $nav-item-bg-hover:     transparent !default;
 $nav-item-bg-current:   transparent !default;
 
 $nav-item-padding:      .5rem 1rem !default;
-$nav-dropdown-bg:       rgba($gray-dark, .8)!default;
+$nav-dropdown-bg:       rgba($gray-800, .8)!default;
 
 $subnav-color:          #fff!default;
 $subnav-bg:             $brand-primary!default;
@@ -26,7 +26,7 @@ $subnav-bg:             $brand-primary!default;
 
   &:hover,
   &:active {
-    @extend .open;
+    //@extend .open;
   }
 }
 

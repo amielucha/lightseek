@@ -1,10 +1,10 @@
 /*!
 Theme Name: Lightseek
-Theme URI: http://iseek.ie/
+Theme URI: https://iseek.ie/
 Author: Slawek Amielucha
 Author URI: https://amielucha.com/
 Description: iSeek light theme.
-Version: 1.9.2
+Version: 1.9.3
 Text Domain: lightseek
 */
 
@@ -27,7 +27,7 @@ $brand-primary:             rebeccapurple;
 // Fonts
 //$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-@import "scss/bootstrap/bootstrap-lightseek";
+@import "scss/bootstrap-lightseek";
 @import "scss/mixins";
 
 // IE flex fix
@@ -55,5 +55,5 @@ $brand-primary:             rebeccapurple;
 
 // Header
 .site-header {
-	background-color: $gray-lighter;
+	background-color: $gray-200;
 }
