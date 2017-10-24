@@ -33,9 +33,16 @@ add_action('lightseek_homepage_content', 'lightseek_homepage_sections', 50);
 
 /* Header */
 add_action('lightseek_header_bg', 'lightseek_header_bg', 10);
-add_action('lightseek_header', 'lightseek_site_branding', 10);
-add_action('lightseek_header', 'lightseek_primary_nav', 20);
-//add_action('lightseek_header', 'lightseek_header_title', 30);
+
+if ( SeekConfig::MENU_STYLE === 'inline' ) {
+	add_action('lightseek_header', 'lightseek_header_inline', 10);
+	add_action('lightseek_header_inline', 'lightseek_site_branding', 10);
+	add_action('lightseek_header_inline', 'lightseek_primary_nav', 20);
+} else {
+	add_action('lightseek_header', 'lightseek_site_branding', 10);
+	add_action('lightseek_header', 'lightseek_primary_nav', 20);
+	//add_action('lightseek_header', 'lightseek_header_title', 30);
+}
 
 /* Footer */
 add_action('lightseek_footer_widgets', 'lightseek_footer_nav', 10);
@@ -87,19 +94,17 @@ function lightseek_site_branding() {
 	?>
 
 	<div class="site-header-inner">
-		<div class="container">
-			<div class="navbar-header">
-				<div class="site-branding" itemscope itemtype="https://schema.org/logo">
-					<?php if ( function_exists( 'the_custom_logo' ) ) the_custom_logo() ?>
-					<?php if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-						<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-					<?php else: ?>
-						<p class="site-title h1"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-						<p class="site-description h2"><?php bloginfo( 'description' ); ?></p>
-					<?php endif ?>
-				</div><!-- .site-branding -->
-			</div>
+		<div class="navbar-header">
+			<div class="site-branding" itemscope itemtype="https://schema.org/logo">
+				<?php if ( function_exists( 'the_custom_logo' ) ) the_custom_logo() ?>
+				<?php if ( is_front_page() && is_home() ) : ?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+				<?php else: ?>
+					<p class="site-title h1"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+					<p class="site-description h2"><?php bloginfo( 'description' ); ?></p>
+				<?php endif ?>
+			</div><!-- .site-branding -->
 		</div>
 	</div>
 
@@ -108,7 +113,7 @@ function lightseek_site_branding() {
 
 function lightseek_primary_nav() {
 	?>
-	<nav id="site-navigation" class="main-navigation navbar container" role="navigation">
+	<nav id="site-navigation" class="main-navigation navbar" role="navigation">
 		<label for="menu-toggle" class="menu-toggle-label"><span class="hamburger" aria-hidden="true">&#8801;</span> Menu</label>
 		<input type="checkbox" id="menu-toggle" class="menu-toggle invisible" aria-controls="primary-menu" />
 		<?php if ( has_nav_menu( 'primary' ) ) wp_nav_menu (
@@ -121,6 +126,15 @@ function lightseek_primary_nav() {
 				)
 		) ?>
 	</nav><!-- #site-navigation -->
+	<?php
+}
+
+// Inline header
+function lightseek_header_inline() {
+	?>
+		<div class="container header-container">
+			<?php do_action('lightseek_header_inline') ?>
+		</div>
 	<?php
 }
 
@@ -164,16 +178,16 @@ function lightseek_footer_render_widgets() {
 
 	switch ( $footer_widget_count ) {
 		case 1:
-			$footer_widget_width = "col-md-24";
+			$footer_widget_width = "col-24 col-md-24";
 			break;
 		case 2:
-			$footer_widget_width = "col-md-12";
+			$footer_widget_width = "col-24 col-md-12";
 			break;
 		case 3:
-			$footer_widget_width = "col-md-8";
+			$footer_widget_width = "col-24 col-md-8";
 			break;
 		default:
-			$footer_widget_width = "col-sm-12 col-md-6";
+			$footer_widget_width = "col-24 col-sm-12 col-md-6";
 			break;
 	}
 
@@ -182,7 +196,7 @@ function lightseek_footer_render_widgets() {
 			for ( $i=1; $i <= $footer_widget_count; $i++ ) {
 				$sBar = $i === 1 ? 'footer-widget' : 'footer-widget-' . $i;
 				if ( is_active_sidebar( $sBar ) )
-					echo "<div class='$footer_widget_width' id='footer_" . $i . "'>"; dynamic_sidebar( $sBar ); echo "</div>";
+					echo "<div class='$footer_widget_width footer-col-" . $i . "' id='footer_" . $i . "'>"; dynamic_sidebar( $sBar ); echo "</div>";
 			}
 		echo '</div>';
 	}

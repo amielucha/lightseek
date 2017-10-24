@@ -222,3 +222,10 @@ img {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+// Inline side header
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
