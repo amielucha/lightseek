@@ -68,21 +68,22 @@ $gravity-inline-inputs: false !default;
 
 // Validation
 .gfield_error {
-	@extend .has-danger;
+	@extend .invalid-feedback;
 
 	.validation_message {
 		@extend .form-control-label;
-		color: $brand-danger;
+		color: theme-color("danger");
 	}
 }
 
 .validation_error {
 	@extend .form-control-label;
-	color: $brand-danger;
+	color: theme-color("danger");
 }
 
 .gfield_error input {
-	@extend .form-control-danger;
+	//@extend .form-control-danger;
+	color: theme-color("danger");
 }
 
 // Multiple Column Inputs

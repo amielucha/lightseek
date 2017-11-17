@@ -105,7 +105,7 @@ function lightseek_scripts() {
 
 	// Web Font Loader
 	// https://github.com/typekit/webfontloader
-	wp_enqueue_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), null );
+	wp_enqueue_script( 'webfont', 'https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js', array(), null );
 
 	// Font Awesome async
 	wp_enqueue_script( 'fa', 'https://use.fontawesome.com/0581ebd445.js', array(), null );

@@ -90,17 +90,17 @@ gulp.task('dev', function(){
 // ES2015
 gulp.task('js', function () {
   const jsFiles = [
-    // './js/src/bootstrap/alert.js,
-    // './js/src/bootstrap/button.js,
-    // './js/src/bootstrap/carousel.js,
-    // './js/src/bootstrap/collapse.js,
-    // './js/src/bootstrap/dropdown.js,
-    // './js/src/bootstrap/modal.js,
-    // './js/src/bootstrap/popover.js,
-    // './js/src/bootstrap/scrollspy.js,
-    // './js/src/bootstrap/tab.js,
-    // './js/src/bootstrap/tooltip.js,
-    // './js/src/bootstrap/util.js,
+    // './node_modules/bootstrap/js/dist/util.js,
+    // './node_modules/bootstrap/js/dist/alert.js,
+    // './node_modules/bootstrap/js/dist/button.js,
+    // './node_modules/bootstrap/js/dist/carousel.js,
+    // './node_modules/bootstrap/js/dist/collapse.js,
+    // './node_modules/bootstrap/js/dist/dropdown.js,
+    // './node_modules/bootstrap/js/dist/modal.js,
+    // './node_modules/bootstrap/js/dist/popover.js,
+    // './node_modules/bootstrap/js/dist/scrollspy.js,
+    // './node_modules/bootstrap/js/dist/tab.js,
+    // './node_modules/bootstrap/js/dist/tooltip.js,
     //'./js/src/jquery.fitvids.js',
     //'./js/src/maps.noscroll.js',
     './js/src/scripts.js'

@@ -42,43 +42,24 @@
           transition-property: $property;  /* Firefox 16+, IE 10+, Opera 12.50+ */
 }
 
-// Vertical Flex mixin
-/* .flex-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+/****************************
+ HIGH PPI DISPLAY BACKGROUNDS
+*****************************/
 
-  .inner {
-    flex-grow: 1;
+@mixin background-2x($path, $ext: "png", $w: auto, $h: auto, $pos: left top, $repeat: no-repeat) {
+
+  $at1x_path: "#{$path}.#{$ext}";
+  $at2x_path: "#{$path}@2x.#{$ext}";
+
+  background-image: url("#{$at1x_path}");
+  background-size: $w $h;
+  background-position: $pos;
+  background-repeat: $repeat;
+
+  @media all and (-webkit-min-device-pixel-ratio : 1.5),
+  all and (-o-min-device-pixel-ratio: 3/2),
+  all and (min--moz-device-pixel-ratio: 1.5),
+  all and (min-device-pixel-ratio: 1.5) {
+    background-image: url("#{$at2x_path}");
   }
-
-  .inner-bottom {
-    flex-grow: 0;
-  }
-} */
-
-// Vertical align using flexbox
-/* .aligner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
-
-.aligner-item {
-  flex: 1;
-}
-
-.aligner-item--top {
-  align-self: flex-start;
-}
-
-.aligner-item--bottom {
-  align-self: flex-end;
-}
-
-.aligner--right {
-  justify-content: flex-end;
-}
- */
