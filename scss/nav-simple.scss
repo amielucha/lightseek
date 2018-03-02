@@ -36,8 +36,11 @@ $subnav-bg:             $brand-primary!default;
     &.current_page_parent,
     &.current-menu-item {
       > .nav-link {
-        color: $nav-text-color-current;
         background-color: $nav-item-bg-current;
+
+        @include media-breakpoint-up($nav-breakpoint-end) {
+          color: $nav-text-color-current;
+        }
       }
 
       &:hover,
@@ -69,11 +72,13 @@ $subnav-bg:             $brand-primary!default;
 
         > .nav-link {
           padding: $nav-item-padding;
-          color: $nav-text-color-current;
           background-color: $nav-item-bg-current;
+
+          @include media-breakpoint-up($nav-breakpoint-end) {
+            color: $nav-text-color-current;
+          }
         }
       }
-
 
       &:hover,
       &:focus {
