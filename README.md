@@ -47,4 +47,6 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 
 ### 1.9.5 (2018-03-02)
 
-- Updated Bootstrap to version 4.0-beta. Bootstrap files are no longer shipped with the theme.
+- Updated Bootstrap to version 4.
+- Updated Node SASS to fix compatibility issues.
+- Tidied up the sidebar column layouts.
