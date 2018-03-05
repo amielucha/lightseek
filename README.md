@@ -50,3 +50,7 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 - Updated Bootstrap to version 4.
 - Updated Node SASS to fix compatibility issues.
 - Tidied up the sidebar column layouts.
+
+### 1.9.6 (2018-03-05)
+
+- Improved the experience when logged in to WordPress and the body container is set to grid. The page height calculation is corrected for the dimensions of the WP admin bar.

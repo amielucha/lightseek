@@ -10,217 +10,226 @@ $font-size-root: inherit !default;
 
 // Typography
 .entry-title {
-	@extend .h1;
+  @extend .h1;
 }
 
 // Top margins for headings within posts
 .hentry {
-	h2:not(.entry-title):not(:first-child),
-	h3,
-	h4,
-	h5,
-	h6 {
-	  margin-top: $spacer*2;
-	}
+  h2:not(.entry-title):not(:first-child),
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: $spacer*2;
+  }
 }
 
 // Animations
 a,
 .btn {
-	@include animate();
-	@include animate-property((background-color, color));
+  @include animate();
+  @include animate-property((background-color, color));
 }
 
 // Images
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 // Screen readers
 .screen-reader-text {
-	@extend .sr-only;
+  @extend .sr-only;
 }
 
 .page-wrapper {
-	padding: $spacer*3 0;
+  padding: $spacer*3 0;
 }
 
 // Footer
 .footer-wrapper {
-	background-color: $gray-200;
-	color: #fff;
-	a {
-		color: currentColor;
-	}
+  background-color: $gray-200;
+  color: #fff;
+  a {
+    color: currentColor;
+  }
 }
 
 .site-info {
-	@extend .small;
+  @extend .small;
 }
 
 .footer-widgets-wrapper {
-	.menu {
-		@extend .nav;
-		flex-direction: column;
-	}
+  .menu {
+    @extend .nav;
+    flex-direction: column;
+  }
 }
 
 // Blog
 // Read more link
 .more-link {
-	//@extend .btn, .btn-outline-primary;
-	margin-top: $spacer;
-	display: block;
+  //@extend .btn, .btn-outline-primary;
+  margin-top: $spacer;
+  display: block;
 }
 
 // iSeek logo
 .iseek-link {
-	text-decoration: none;
+  text-decoration: none;
 
-	@include hover-focus {
-		text-decoration: none;
-	}
+  @include hover-focus {
+    text-decoration: none;
+  }
 }
 
 .the-iseek-logo {
-	height: 1.33em;
-	fill: currentColor;
+  height: 1.33em;
+  fill: currentColor;
 }
 
 // Pagination
 .pagination {
-	.pages {
-		&:hover,
-		&:focus {
-			color: inherit;
-			background-color: inherit;
-		}
-	}
+  .pages {
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: inherit;
+    }
+  }
 }
 
 // Previous / Next Post
 .post-navigation {
-	border-top: 1px solid $gray-600;
+  border-top: 1px solid $gray-600;
 }
 
 // Buttons
 .btn {
-	margin-bottom: $spacer;
+  margin-bottom: $spacer;
 }
 
 .btn-alt {
-	border: 1px solid;
+  border: 1px solid;
 }
 
 .btn-white {
-	background-color: white;
-	color: $brand-primary;
+  background-color: white;
+  color: $brand-primary;
 }
 
 // Top Bar
 .top-bar-container {
-	display: flex;
-	align-items: stretch;
-	.text-right & {
-		justify-content: flex-end;
-	}
+  display: flex;
+  align-items: stretch;
+  .text-right & {
+    justify-content: flex-end;
+  }
 
-	.cart-btn {
-		flex-basis: 2rem;
-		text-align: center;
-	}
+  .cart-btn {
+    flex-basis: 2rem;
+    text-align: center;
+  }
 }
 
 // Main Nav
 .navbar-nav {
-	display: flex;
+  display: flex;
     justify-content: center;
 
-	@include media-breakpoint-down(sm) {
-		flex-flow: column;
-	}
+  @include media-breakpoint-down(sm) {
+    flex-flow: column;
+  }
 }
 
 // Push Footer using Flex
 @if $body-flex-height {
-	body {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-	.page-wrapper {
-		flex: 1;
-	}
+  .page-wrapper {
+    flex: 1;
+  }
 
-	// IE hack
-	// Bug details: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
-	@media screen and (-ms-high-contrast:none) {
+  // IE hack
+  // Bug details: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
+  @media screen and (-ms-high-contrast:none) {
     body { display: block } /* IE10 */
   }
 }
 
 // Grid-based body height
 @if $body-grid-height {
-	@supports (display: grid) {
-	  body {
-	    min-height: 100vh;
-	    display: grid;
-	    grid-template-rows: auto 1fr auto;
-	    grid-template-columns: 1fr;
-	  }
+  @supports (display: grid) {
+    body {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 1fr;
 
-	  .site-header {
-	    grid-row: 1;
-	    grid-column: 1;
-	  }
+      // If admin bar is visible reduce the grid height
+      &.admin-bar {
+        min-height: calc(100vh - 48px);
 
-	  .page-wrapper {
-	    grid-row: 2;
-	    grid-column: 1;
-	  }
+        @media (min-width: 782px) {
+          min-height: calc(100vh - 32px);
+        }
+      }
+    }
 
-	  .footer-wrapper {
-	    grid-row: 3;
-	    grid-column: 1;
-	  }
-	}
+    .site-header {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    .page-wrapper {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    .footer-wrapper {
+      grid-row: 3;
+      grid-column: 1;
+    }
+  }
 }
 
 // Timestamp
 .entry-meta {
-	margin-bottom: $spacer;
+  margin-bottom: $spacer;
 
-	time {
-		opacity: 1;
-	}
+  time {
+    opacity: 1;
+  }
 }
 
 // Post Cover
 .post-cover {
-	&.alignright {
-		max-width: 150px;
+  &.alignright {
+    max-width: 150px;
 
-		@include media-breakpoint-down(xs) {
-			float: none;
-			display: block;
-			margin: $spacer 0;
-			max-width: 100%;
-			text-align: center;
-		}
-	}
+    @include media-breakpoint-down(xs) {
+      float: none;
+      display: block;
+      margin: $spacer 0;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
 }
 
 // Site header with a background
 .site-header {
-	background-size: cover;
-	background-position: center center;
+  background-size: cover;
+  background-position: center center;
 }
 
 .panel-image {
-	background-size: cover;
-	background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 // Inline side header
