@@ -108,7 +108,7 @@ function lightseek_scripts() {
 	wp_enqueue_script( 'webfont', 'https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js', array(), null );
 
 	// Font Awesome async
-	wp_enqueue_script( 'fa', 'https://use.fontawesome.com/0581ebd445.js', array(), null );
+	wp_enqueue_script( 'fa', 'https://use.fontawesome.com/releases/v5.0.8/js/all.js', array(), null );
 
 	// Main Script
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/main.min.js', array( 'jquery', 'webfont' ), '20170202', true );
@@ -119,18 +119,18 @@ add_action( 'wp_enqueue_scripts', 'lightseek_scripts' );
  * defer/async scripts.
  */
 function add_defer_attribute($tag, $handle) {
-    if ( 'webfont' !== $handle && 'scripts' !== $handle )
+    if ( 'webfont' !== $handle && 'scripts' !== $handle && 'fa' !== $handle )
         return $tag;
     return str_replace( ' src', ' defer src', $tag );
 }
 add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
-function add_async_attribute($tag, $handle) {
+/*function add_async_attribute($tag, $handle) {
     if ( 'fa' !== $handle )
         return $tag;
     return str_replace( ' src', ' async src', $tag );
 }
-add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+add_filter('script_loader_tag', 'add_async_attribute', 10, 2);*/
 
 
 /**

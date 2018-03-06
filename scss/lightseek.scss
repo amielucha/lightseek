@@ -167,7 +167,7 @@ img {
     body {
       min-height: 100vh;
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
       grid-template-columns: 1fr;
 
       // If admin bar is visible reduce the grid height
@@ -180,20 +180,26 @@ img {
       }
     }
 
-    .site-header {
+    .top-bar {
       grid-row: 1;
       grid-column: 1;
     }
 
-    .page-wrapper {
+    .site-header {
       grid-row: 2;
       grid-column: 1;
     }
 
-    .footer-wrapper {
+    .page-wrapper {
       grid-row: 3;
       grid-column: 1;
     }
+
+    .footer-wrapper {
+      grid-row: 4;
+      grid-column: 1;
+    }
+
   }
 }
 
