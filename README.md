@@ -1,8 +1,8 @@
-Lightseek is a starter WordPress theme we use at [iSeek](http://www.iseek.ie/).
+Lightseek is a starter WordPress theme we use at [iSeek](https://www.iseek.ie/).
 
 ## Installation
 
-Lightseek requires [Gulp](http://gulpjs.com/).
+Lightseek requires [Gulp](https://gulpjs.com/).
 
 First install the node dependencies:
 
@@ -54,3 +54,8 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 ### 1.9.6 (2018-03-05)
 
 - Improved the experience when logged in to WordPress and the body container is set to grid. The page height calculation is corrected for the dimensions of the WP admin bar.
+
+### 1.10.0 (2018-03-06)
+
+- Updated FontAwesome to version 5.
+- Fixed `.top-bar` display when using Grid layout.

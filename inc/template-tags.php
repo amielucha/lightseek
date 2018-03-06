@@ -50,7 +50,7 @@ add_filter( 'wp_pagenavi', 'lightseek_pagination', 10, 2 );
 
 
 // Replace post navigation html
-function lightseek_post_navigation( $args = array('prev_text' => '<span class="fa fa-caret-left" aria-hidden="true"></span> %title', 'next_text' => '%title <span class="fa fa-caret-right" aria-hidden="true"></span>' ) ){
+function lightseek_post_navigation( $args = array('prev_text' => '<span class="fas fa-caret-left" aria-hidden="true"></span> %title', 'next_text' => '%title <span class="fa fa-caret-right" aria-hidden="true"></span>' ) ){
 	$out = get_the_post_navigation( $args );
 
 	$out = str_replace("<div class=\"nav-links\">","<ul class=\"nav-links pager\">",$out);

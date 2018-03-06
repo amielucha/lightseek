@@ -6,7 +6,7 @@
 			<?php dynamic_sidebar( 'topbar' ); ?>
 			<?php if ( class_exists( 'WooCommerce' ) ){
 				global $woocommerce;
-				echo '<a class="cart-btn" href="' . $woocommerce->cart->get_cart_url() . '" title="' . __( 'Shopping Cart' ) . '">' . __( '<span class="sr-only">Cart</span><span class="fa fa-shopping-cart" aria-hidden="true"></span>' ) . '</a>';
+				echo '<a class="cart-btn" href="' . $woocommerce->cart->get_cart_url() . '" title="' . __( 'Shopping Cart' ) . '">' . __( '<span class="sr-only">Cart</span><span class="fas fa-shopping-cart" aria-hidden="true"></span>' ) . '</a>';
 			}
 			?>
 		</div>
