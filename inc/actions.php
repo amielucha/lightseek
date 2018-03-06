@@ -57,7 +57,7 @@ add_action('lightseek_footer_siteinfo', 'lightseek_designed_by', 80);
  * Template opening and closing tags
  */
 require_once get_template_directory() . '/inc/template-wrappers.php';
-add_action('lightseek_template_start', 'lightseek_template_wrapper_start', 50);
+add_action('lightseek_template_start', 'lightseek_template_wrapper_start', 50, 1);
 add_action('lightseek_template_end', 'lightseek_template_wrapper_end', 50);
 
 /*

@@ -6,7 +6,7 @@
  */
 
 get_header();
-do_action('lightseek_template_start');
+do_action('lightseek_template_start', 'container'); // Use 'container', 'container-fluid', or custom class., 'container');
 ?>
 
 	<?php the_post(); ?>

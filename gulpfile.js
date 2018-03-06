@@ -32,6 +32,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const flexbug = require('postcss-flexbugs-fixes');
+const injectVersion = require('gulp-inject-version');
 const groupMediaQueries = require('gulp-group-css-media-queries');
 
 // helper function to build an FTP connection based on our configuration
@@ -59,6 +60,7 @@ gulp.task('default', ['js'],  function(){
   ];
 
   return gulp.src('./style.scss')
+    .pipe(injectVersion())
     .pipe(sourcemaps.init())
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(sass().on('error', sass.logError))
@@ -79,6 +81,7 @@ gulp.task('dev', function(){
   ];
 
   return gulp.src('./style.scss')
+    .pipe(injectVersion())
     .pipe(sourcemaps.init())
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(sass().on('error', sass.logError))

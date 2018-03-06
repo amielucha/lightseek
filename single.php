@@ -6,7 +6,7 @@
  */
 
 get_header();
-do_action('lightseek_template_start');
+do_action('lightseek_template_start', 'container'); // Use 'container', 'container-fluid', or custom class.);
 ?>
 	<div class="row">
 		<?php echo ( SeekConfig::SIDEBAR && is_active_sidebar('sidebar') ) ? '<div class="col-24 col-md-' . ( 24 - SeekConfig::SIDEBAR_W ) . '">' : '<div class="col-24 col-md-24">' ?>

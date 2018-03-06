@@ -3,17 +3,17 @@
  * Opening and closing of the default template wrapping tags.
  * IMPORTANT: make sure the closing tags match the opening tags.
  */
-function lightseek_template_wrapper_start(){
+function lightseek_template_wrapper_start( $container_class ){
   ?>
     <div id="primary" class="content-area">
       <main id="main" class="site-main" role="main">
-        <div class="container">
+        <div class="<?php echo $container_class ? $container_class : 'container' ?>">
   <?php
 }
 
 function lightseek_template_wrapper_end(){
   ?>
-        </div><!-- .container -->
+        </div><!-- innermost container -->
       </main><!-- .site-main -->
     </div><!-- .content-area -->
   <?php
