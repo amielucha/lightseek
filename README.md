@@ -59,3 +59,10 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 
 - Updated FontAwesome to version 5.
 - Fixed `.top-bar` display when using Grid layout.
+
+### 1.11.0 (2018-03-27)
+
+- Added a custom var_dump().
+- Removed bottom margin from `.btn`.
+- Fixed sidebar column display on mobiles.
+- Added theme `index.php` protection.

@@ -173,5 +173,16 @@ if ( SeekConfig::READ_MORE_BUTTON )
 if( function_exists('acf_add_options_page') )
 	acf_add_options_page();
 
+// custom var_dump()
+if ( !function_exists('vd') ) {
+	function vd($var) {
+		if (!WP_DEBUG) return;
+
+		echo '<pre>';
+			var_dump($var);
+		echo '</pre>';
+	}
+}
+
 // Actions
 require get_template_directory() . '/inc/actions.php';

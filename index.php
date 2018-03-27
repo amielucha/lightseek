@@ -4,6 +4,7 @@
  *
  * @package lightseek
  */
+defined('ABSPATH') or die("These Are Not the Droids You Are Looking For");
 
 get_header();
 do_action('lightseek_template_start', 'container'); // Use 'container', 'container-fluid', or custom class.);
