@@ -71,13 +71,13 @@ $gravity-inline-inputs: false !default;
 	@extend .invalid-feedback;
 
 	.validation_message {
-		@extend .form-control-label;
+		//@extend .form-control-label;
 		color: theme-color("danger");
 	}
 }
 
 .validation_error {
-	@extend .form-control-label;
+	//@extend .form-control-label;
 	color: theme-color("danger");
 }
 

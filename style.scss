@@ -29,6 +29,20 @@ $theme-colors: (
   primary: $brand-primary
 );
 
+// Override Bootstrap's spacers
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer,
+  2: ($spacer * 2),
+  3: ($spacer * 3),
+  4: ($spacer * 4),
+  5: ($spacer * 5),
+  12:($spacer * .5),
+  13:($spacer * .333),
+  14:($spacer * .25),
+);
+
 // Fonts
 //$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -52,7 +66,7 @@ $theme-colors: (
 // @import "scss/gravity";
 
 // WooCommerce
-// @import "woo";
+@import "scss/woo";
 
 // Typography
 .entry-title {

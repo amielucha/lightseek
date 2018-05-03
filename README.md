@@ -66,3 +66,12 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 - Removed bottom margin from `.btn`.
 - Fixed sidebar column display on mobiles.
 - Added theme `index.php` protection.
+
+### 1.12.0 (2018-05-02)
+
+- Added Font Awesome Pro support (requires file upload to the theme directory).
+- Added Breadcrumbs action (requires Yoast SEO plugin with Breadcrumbs active).
+- Updated script defer function.
+- Fixed incorrect WooCommerce SCSS URL
+- Commented out `.form-control-label` in Gravity Forms SCSS. It's no longer supported by Bootstrap.
+- Changed the default spacer classes

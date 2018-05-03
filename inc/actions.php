@@ -216,3 +216,19 @@ function lightseek_designed_by() {
 	include get_template_directory() . '/images/iseek-logo.svg';
 	echo '</a>';
 }
+
+
+/* Breadcrumbs */
+function lightseek_breadcrumbs() {
+	// Don't show breadcrumbs on the homepage.
+	if ( is_front_page() || !function_exists('yoast_breadcrumb') ) return;
+
+  $bread = yoast_breadcrumb('<nav aria-label="breadcrumb" id="breadcrumbs" class="breadcrumb">','</nav>', false);
+
+  // Apply Bootstrap classes to the breadcrumbs
+  $bread = str_replace('class="breadcrumb_last"', 'class="breadcrumb_last breadcrumb-item active"', $bread);
+  $bread = str_replace('property="v:title"', 'property="v:title" class="breadcrumb-item"', $bread);
+
+  echo $bread;
+}
+add_action( 'lightseek_template_start', 'lightseek_breadcrumbs', $priority = 80 );
