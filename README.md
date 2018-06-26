@@ -75,3 +75,8 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 - Fixed incorrect WooCommerce SCSS URL
 - Commented out `.form-control-label` in Gravity Forms SCSS. It's no longer supported by Bootstrap.
 - Changed the default spacer classes
+
+### 1.13.0 (2018-06-26)
+
+- Added Gravity Helpers CSS to prevent layout issues when default GF styles are disabled.
+- Fixed the Search Form layout to display correctly using Bootstrap 4 classes and enabled Input Group styles by default.

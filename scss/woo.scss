@@ -23,3 +23,16 @@
 .woocommerce .woocommerce-info::before {
 	color: $brand-primary;
 }
+
+// Fix for WooCommerce columns
+.col2-set {
+  @include make-row();
+  .col-1, .col-2 {
+    @include make-col(12);
+  }
+}
+
+.woocommerce-input-wrapper {
+  display: block;
+  width: 100%;
+}
