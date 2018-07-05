@@ -80,3 +80,7 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 
 - Added Gravity Helpers CSS to prevent layout issues when default GF styles are disabled.
 - Fixed the Search Form layout to display correctly using Bootstrap 4 classes and enabled Input Group styles by default.
+
+### 1.14.0 (2018-07-05)
+
+- Added support for WooCommerce lightbox and gallery.
