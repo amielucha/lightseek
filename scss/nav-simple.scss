@@ -143,6 +143,10 @@ $subnav-bg:             $brand-primary!default;
   margin-top: 0;
   padding: 0;
 
+  .navbar-nav & {
+    position: absolute;
+  }
+
   .nav-item, .nav-item + .nav-item {
     margin-left: 0;
     float: none;
