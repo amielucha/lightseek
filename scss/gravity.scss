@@ -68,7 +68,7 @@ $gravity-inline-inputs: false !default;
 
 // Validation
 .gfield_error {
-	@extend .invalid-feedback;
+	//@extend .invalid-feedback;
 
 	.validation_message {
 		//@extend .form-control-label;
