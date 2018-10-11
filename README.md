@@ -84,3 +84,8 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 ### 1.14.0 (2018-07-05)
 
 - Added support for WooCommerce lightbox and gallery.
+
+### 1.15.0 (2018-10-11)
+
+- Fixed Gravity Forms SCSS
+- Replaced `push-` classes with `offset-` in page.php
