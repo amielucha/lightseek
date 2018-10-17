@@ -45,9 +45,8 @@ $subnav-bg:             $brand-primary!default;
     &.current_page_parent,
     &.current-menu-item {
       > .nav-link {
-        background-color: $nav-item-bg-current;
-
         @include media-breakpoint-up($nav-breakpoint-end) {
+          background-color: $nav-item-bg-current;
           color: $nav-text-color-current;
         }
       }
@@ -83,9 +82,9 @@ $subnav-bg:             $brand-primary!default;
 
         > .nav-link {
           padding: $nav-item-padding;
-          background-color: $nav-item-bg-current;
 
           @include media-breakpoint-up($nav-breakpoint-end) {
+            background-color: $nav-item-bg-current;
             color: $nav-text-color-current;
           }
         }

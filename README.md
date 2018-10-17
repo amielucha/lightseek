@@ -89,3 +89,8 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 
 - Fixed Gravity Forms SCSS
 - Replaced `push-` classes with `offset-` in page.php
+
+### 1.16.0 (2018-10-17)
+
+- Disabled Gutenberg Nag panel
+- Adjusted mobile nav styles

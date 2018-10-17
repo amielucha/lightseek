@@ -192,5 +192,8 @@ if ( !function_exists('vd') ) {
   }
 }
 
+// Disable Gutenberg nag
+remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
+
 // Actions
 require get_template_directory() . '/inc/actions.php';
