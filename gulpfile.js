@@ -1,26 +1,5 @@
-/* Configure FTP */
-//
-const rootFolder = ''; // example: 'website.com'
-const hostName = 'web2.darklite.ie';
-/* #Configure FTP */
-
-// Set variables in Windows like this:
-//  `set FTP_USER=username`
-//  `set FTP_PWD=password123`
-const user = process.env.FTP_USER || '';
-const password =  process.env.FTP_PWD || '';
-const host = process.env.FTP_HOST || hostName;
-const remoteFolder ='/' + rootFolder + '/wp-content/themes/lightseek/';
-const port = 21;
-const localFilesGlob = ['./*', './fonts/*', './images/*', './inc/*', './js/src/*', './modules/*', './scss/*', '!./*.{css,map,js}' ];
-const localFilesUpload = ['./*', './fonts/*', './images/*', './inc/*', './js/*', './modules/*', './scss/*', '!./*.{js}' ];
-
-
-// Requires
 const gulp = require('gulp');
-const ftp = require('vinyl-ftp');
 const sass = require('gulp-sass');
-const gutil = require('gulp-util');
 const cssnano = require('cssnano');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
@@ -35,21 +14,59 @@ const flexbug = require('postcss-flexbugs-fixes');
 const injectVersion = require('gulp-inject-version');
 const groupMediaQueries = require('gulp-group-css-media-queries');
 
-// helper function to build an FTP connection based on our configuration
-function getFtpConnection() {
-  return ftp.create({
-    host: host,
-    port: port,
-    user: user,
-    password: password,
-    parallel: 5,
-    log: gutil.log
-  });
-}
+// Watch locations
+const localFilesGlob = ['./*', './fonts/*', './images/*', './inc/*', './js/src/*', './modules/*', './scss/*', '!./*.{css,map,js}' ];
 
+// build without minification
+gulp.task('dev', function(){
+  var processors = [
+    autoprefixer({
+      browsers: ['last 2 versions'],
+        cascade: false
+      }),
+      flexbug(),
+  ];
+  
+  return gulp.src('./style.scss')
+  .pipe(injectVersion())
+    .pipe(sourcemaps.init())
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./'))
+  });
+
+// JS
+gulp.task('js', function () {
+  const jsFiles = [
+    //'./js/src/jquery.fitvids.js',
+    //'./js/src/maps.noscroll.js',
+    './js/src/scripts.js'
+  ];
+  
+  return gulp.src(jsFiles)
+  .pipe(sourcemaps.init())
+  .pipe(concat('main.js'))
+  .pipe(babel())
+  .pipe(rename('main.min.js'))
+  .pipe(uglify())
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('./js/'));
+});
+
+// Local watch - dev
+gulp.task('watch', function(){
+  gulp.watch(localFilesGlob, gulp.series('dev'));
+});
+
+// Local watch - full build
+gulp.task('watch-full', function(){
+  gulp.watch(localFilesGlob, gulp.series('default'));
+});
 
 // Full build
-gulp.task('default', ['js'],  function(){
+gulp.task('default', gulp.series('js',  function(){
   var processors = [
     autoprefixer({
         browsers: ['last 2 versions'],
@@ -68,97 +85,4 @@ gulp.task('default', ['js'],  function(){
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./'))
-});
-
-// build without minification
-gulp.task('dev', function(){
-  var processors = [
-    autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
-    }),
-    flexbug(),
-  ];
-
-  return gulp.src('./style.scss')
-    .pipe(injectVersion())
-    .pipe(sourcemaps.init())
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(processors))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./'))
-});
-
-// ES2015
-gulp.task('js', function () {
-  const jsFiles = [
-    // './node_modules/bootstrap/js/dist/util.js,
-    // './node_modules/bootstrap/js/dist/alert.js,
-    // './node_modules/bootstrap/js/dist/button.js,
-    // './node_modules/bootstrap/js/dist/carousel.js,
-    // './node_modules/bootstrap/js/dist/collapse.js,
-    // './node_modules/bootstrap/js/dist/dropdown.js,
-    // './node_modules/bootstrap/js/dist/modal.js,
-    // './node_modules/bootstrap/js/dist/popover.js,
-    // './node_modules/bootstrap/js/dist/scrollspy.js,
-    // './node_modules/bootstrap/js/dist/tab.js,
-    // './node_modules/bootstrap/js/dist/tooltip.js,
-    //'./js/src/jquery.fitvids.js',
-    //'./js/src/maps.noscroll.js',
-    './js/src/scripts.js'
-  ];
-
-  return gulp.src(jsFiles)
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
-    .pipe(babel())
-    .pipe(rename('main.min.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./js/'));
-});
-
-// Local watch - dev
-gulp.task('watch', function(){
-  gulp.watch(localFilesGlob, ['dev']);
-});
-
-// Local watch - full build
-gulp.task('watch-full', function(){
-  gulp.watch(localFilesGlob, ['default']);
-});
-
-// Upload via FTP - dev
-gulp.task('upload-dev', ['dev'], function(){
-  var conn = getFtpConnection();
-  console.log('Changes detected! Uploading file');
-
-  return gulp.src( localFilesUpload, { base: '.', buffer: false } )
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-    .pipe( conn.newer( remoteFolder ) ) // only upload newer files
-    .pipe( conn.dest( remoteFolder ) );
-});
-
-// upload via FTP
-gulp.task('upload', ['default'], function(){
-  var conn = getFtpConnection();
-  console.log('Changes detected! Uploading file');
-
-  return gulp.src( localFilesUpload, { base: '.', buffer: false } )
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-    .pipe( conn.newer( remoteFolder ) ) // only upload newer files
-    .pipe( conn.dest( remoteFolder ) );
-});
-
-// FTP Dev watcher
-gulp.task('ftp-watch', function(){
-  var conn = getFtpConnection();
-  gulp.watch(localFilesGlob, ['upload-dev']);
-});
-
-// FTP Live Site watcher
-gulp.task('ftp-watch-live', function(){
-  var conn = getFtpConnection();
-  gulp.watch(localFilesGlob, ['upload']);
-});
+}));

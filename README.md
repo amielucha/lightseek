@@ -22,16 +22,6 @@ You can also watch files for changes. Watch task uses dev mode:
 
 `gulp watch`
 
-## FTP config
-
-Version 1.5 introduces two new watchers that automatically upload changed files via FTP. `ftp-watch` is a develompent task and `ftp-watch-live` is a slower task that includes minifiers.
-
-To configure the FTP connection under Windows set `FTP_HOST`, `FTP_USER` and `FTP_PWD` variables. Example:
-
-```set FTP_HOST=web.darklite.ie & set FTP_USER=username & FTP_PWD=password123 & gulp ftp-watch```
-
-You should also configure `rootFolder` and (alternative for FTP_HOST variable) `hostName` in `gulpfile.js`.
-
 Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that builds the full application on save incl. minifying.
 
 ## Changelog
@@ -94,3 +84,8 @@ Version 1.8 adds scripts and a new build watch mode `gulp watch-full` that build
 
 - Disabled Gutenberg Nag panel
 - Adjusted mobile nav styles
+
+### 1.17.0 (2019-01-07)
+
+- Removed FTP support and required dependencies
+- Updated All dependencies including Gulp and Babel
