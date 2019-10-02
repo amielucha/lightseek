@@ -1,0 +1,28 @@
+/*!
+Theme Name: Lightseek
+Theme URI: https://iseek.ie/
+Author: Sławomir Amielucha
+Author URI: https://amielucha.com/
+Description: iSeek light theme.
+Version: 2.0.0-alpha-2
+Text Domain: lightseek
+Tags: starter-theme
+*/ 
+
+@import "variables-site/variables-site"; 
+@import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "normalize";
+
+/*--------------------------------------------------------------
+# Common CSS for backend and frontend
+--------------------------------------------------------------*/
+@import "common";
+
+/*--------------------------------------------------------------
+# Only frontend CSS
+--------------------------------------------------------------*/
+@import "frontend";

@@ -1,0 +1,16 @@
+.wp-block-group {
+  &.has-background {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  &.has-primary-background-color {
+    color: #fff;
+    background-color: $primary;
+  }
+  
+  &.has-secondary-background-color {
+    color: #fff;
+    background-color: $secondary;
+  }
+}

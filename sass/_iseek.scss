@@ -1,0 +1,12 @@
+.iseek-link {
+  text-decoration: none;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+.the-iseek-logo {
+  height: 1.33em;
+  fill: currentColor;
+}

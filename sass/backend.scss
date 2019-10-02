@@ -1,0 +1,36 @@
+/*--------------------------------------------------------------
+# Backend only CSS for Gutenberg
+--------------------------------------------------------------*/
+@import 'variables-site/variables-site';
+@import 'mixins/mixins-master';
+
+/*--------------------------------------------------------------
+# Common CSS for backend and frontend
+--------------------------------------------------------------*/
+@import 'common';
+
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+@import 'buttons';
+
+// Page title
+.wp-admin {
+  .editor-styles-wrapper {
+    font-family: $font__main;
+  }
+
+  .editor-post-title__block,
+  .editor-post-title__input {
+    font-family: $font__headings;
+  }
+}
+
+body {
+  font-family: $font__main;
+}
+
+// Fix Kadence block colors
+.kt-accordion-panel .kt-accordion-panel-inner {
+  color: initial;
+}

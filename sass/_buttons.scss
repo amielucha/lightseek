@@ -1,0 +1,56 @@
+.wp-block-button {
+  .wp-block-button__link {
+    border-radius: 0;
+    
+    &.has-inherit-color {
+      color: inherit;
+    }
+    
+    &.has-inherit-background-color {
+      background-color: inherit;
+    }
+    
+    &.has-transparent-background-color {
+      background-color: transparent;
+    }
+  }
+  
+  &.is-uppercase {
+    text-transform: uppercase;
+  }
+
+  &.is-inline {
+    padding-right: 0;
+    display: inline-block;
+
+    + .is-inline {
+      margin-left: 1rem;
+      padding-left: 0;
+    }
+  }
+
+  &.is-style-default {
+    .wp-block-button__link {
+      // 
+    }
+  }
+
+  &.is-style-borderless {
+    .wp-block-button__link {
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+// Block editor enhancements
+.block-editor {
+  .wp-block-button {
+    .wp-block-button__link {
+      &.has-inherit-background-color,
+      &.has-transparent-background-color {
+        outline: 1px dotted silver;
+      }
+    }
+  }
+}

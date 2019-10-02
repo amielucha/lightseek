@@ -1,0 +1,114 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get( $columns, $numberColumns ) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+}
+
+// Full width container
+@mixin container($max-width: $site__max-width) {
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	@media screen and (min-width: 16px + $max-width + 16px) {
+		padding-left: calc((100vw - #{$max-width}) / 2);
+		padding-right: calc((100vw - #{$max-width}) / 2);
+	}
+}
+
+@mixin container-margin($max-width: $site__max-width) {
+	margin-left: 1rem;
+	margin-right: 1rem;
+
+	@media screen and (min-width: 16px + $max-width + 16px) {
+		margin-left: calc((100vw - #{$max-width}) / 2);
+		margin-right: calc((100vw - #{$max-width}) / 2);
+	}
+}
+
+// FOUT cure
+@mixin fout( $font-family: $font__main ) {
+  .wf-loading & {
+    visibility: hidden;
+  }
+
+  .wf-active &, .wf-inactive & {
+    font-family: $font-family;
+  }
+}
+
+// Background cover-style
+@mixin cover($position: center center) {
+  background-size: cover;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+@mixin contain($position: center center) {
+  background-size: contain;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+.cover {
+  @include cover;
+}
+
+
+// Breakpoint mixins
+@mixin mobile() {
+	@media screen and (max-width: 37.5em) {
+		@content;
+	}
+}
+
+@mixin tablet() {
+	@media screen and (min-width: 37.5em) {
+		@content;
+	}
+}
+
+@mixin desktop() {
+	@media screen and (min-width: 48em) {
+		@content;
+	}
+}
+
+@mixin menu() {
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+
+	@include desktop() {
+		display: flex;
+		
+		/* .menu-item {
+			+ .menu-item {
+				margin-left: 1rem;
+			}
+		} */
+	}
+}

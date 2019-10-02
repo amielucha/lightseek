@@ -1,0 +1,8 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  @include container;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
