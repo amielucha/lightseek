@@ -1,33 +1,61 @@
 <?php
 /**
- * The theme header.
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package lightseek
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-<?php wp_head();
-	// TODO: remove if not needed
-	$body_class = '';
-	if( is_single() && has_post_thumbnail() ) $body_class .= 'with-cover';
 ?>
+<!doctype html>
+<html <?php language_attributes(); ?>>
 
-<body <?php body_class($body_class); ?>>
+<head>
+	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php if ( SeekConfig::TOPBAR )
-		get_template_part( 'modules/topbar', 'default' );
-	?>
+	<?php wp_head(); ?>
+</head>
 
-	<header class="site-header" <?php do_action('lightseek_header_bg') ?>>
-		<?php do_action('lightseek_header') ?>
-	</header>
+<body <?php body_class(); ?>>
+	<?php wp_body_open(); ?>
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'lightseek'); ?></a>
 
-<div id="page-wrapper" class="page-wrapper">
-	<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header">
+			<div class="site-branding">
+				<?php
+				the_custom_logo();
+				if (is_front_page() && is_home()) :
+					?>
+					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+				<?php
+			else :
+				?>
+					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
+				<?php
+			endif;
+			$lightseek_description = get_bloginfo('description', 'display');
+			if ($lightseek_description || is_customize_preview()) :
+				?>
+					<p class="site-description"><?php echo $lightseek_description; /* WPCS: xss ok. */ ?></p>
+				<?php endif; ?>
+			</div><!-- .site-branding -->
+
+			<nav id="site-navigation" class="main-navigation">
+				<?php
+				do_action( 'lightseek_mobile_toggle' );
+
+				wp_nav_menu(array(
+					'theme_location' => 'primary',
+					'menu_id'        => 'primary-menu',
+				));
+				?>
+			</nav><!-- #site-navigation -->
+		</header><!-- #masthead -->
+
 		<div id="content" class="site-content">

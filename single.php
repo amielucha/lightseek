@@ -1,30 +1,37 @@
 <?php
 /**
- * Single post template.
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package lightseek
  */
 
 get_header();
-do_action('lightseek_template_start', 'container'); // Use 'container', 'container-fluid', or custom class.);
 ?>
-	<div class="row">
-		<?php echo ( SeekConfig::SIDEBAR && is_active_sidebar('sidebar') ) ? '<div class="col-24 col-md-' . ( 24 - SeekConfig::SIDEBAR_W ) . '">' : '<div class="col-24 col-md-24">' ?>
-			<?php if ( have_posts() ) : ?>
-				<?php while ( have_posts() ) : the_post(); ?>
 
-						<?php get_template_part( 'modules/content', 'single' ) ?>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-						<?php lightseek_post_navigation() ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
 
-						<?php if ( comments_open() || get_comments_number() ) comments_template()	?>
+			get_template_part( 'template-parts/content', get_post_type() );
 
-					<?php endwhile ?>
-			<?php endif ?>
-		<?php echo '</div>'; // closing the conditional tag ?>
-		<?php if ( SeekConfig::SIDEBAR && is_active_sidebar('sidebar') ) get_sidebar() ?>
-	</div>
+			the_post_navigation();
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php
-do_action('lightseek_template_end');
+get_sidebar();
 get_footer();

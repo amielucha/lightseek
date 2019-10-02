@@ -1,31 +1,27 @@
 <?php
 /**
- * The theme footer.
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package lightseek
  */
+
 ?>
-		</div><!-- #content -->
-	</div><!-- #page -->
-</div><!-- #page-wrapper -->
 
-<footer class="footer-wrapper">
+</div><!-- #content -->
 
-	<div class="footer-widgets-wrapper">
-		<div class="footer-widgets-container container">
-			<?php do_action('lightseek_footer_widgets') ?>
-		</div>
-	</div>
-	<div class="colophon-wrapper">
-		<div id="colophon" class="site-footer container text-center" role="contentinfo">
-			<div class="site-info">
-				<?php do_action('lightseek_footer_siteinfo') ?>
-			</div><!-- .site-info -->
-		</div><!-- #colophon -->
-	</div>
-
-</footer>
+<footer id="colophon" class="site-footer">
+    <div class="site-info">
+        <?php do_action('lightseek_footer') ?>
+    </div><!-- .site-info -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
+
 </body>
+
 </html>

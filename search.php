@@ -1,38 +1,55 @@
 <?php
 /**
- * The main template file.
+ * The template for displaying search results pages
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
  * @package lightseek
  */
 
 get_header();
-do_action('lightseek_template_start');
 ?>
-	<?php if ( have_posts() ) : ?>
 
-		<?php if ( is_home() && ! is_front_page() ) : ?>
-			<header>
-				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-			</header>
-		<?php endif; ?>
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-		<?php /* Start the Loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : ?>
+
+			<header class="page-header">
+				<h1 class="page-title">
+					<?php
+					/* translators: %s: search query. */
+					printf( esc_html__( 'Search Results for: %s', 'lightseek' ), '<span>' . get_search_query() . '</span>' );
+					?>
+				</h1>
+			</header><!-- .page-header -->
 
 			<?php
-				get_template_part( 'modules/content', 'search' );
-			?>
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
 
-		<?php endwhile; ?>
+				/**
+				 * Run the loop for the search to output the results.
+				 * If you want to overload this in a child theme then include a file
+				 * called content-search.php and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', 'search' );
 
-		<?php lightseek_posts_navigation() ?>
+			endwhile;
 
-	<?php else : ?>
+			the_posts_navigation();
 
-		<?php get_template_part( 'modules/content', 'none' ); ?>
+		else :
 
-	<?php endif; ?>
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+		?>
+
+		</main><!-- #main -->
+	</section><!-- #primary -->
 
 <?php
-do_action('lightseek_template_end');
+get_sidebar();
 get_footer();

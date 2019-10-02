@@ -1,23 +1,40 @@
 <?php
 /**
- * The Page template.
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
  * @package lightseek
  */
 
 get_header();
-do_action('lightseek_template_start', 'container'); // Use 'container', 'container-fluid', or custom class.);
 ?>
-	<div class="row">
-		<?php echo ( SeekConfig::SIDEBAR_ON_PAGES && SeekConfig::SIDEBAR && is_active_sidebar('sidebar') ) ? '<div class="col-24 col-md-' . ( 24 - SeekConfig::SIDEBAR_W ) . '">' : '<div class="offset-md-2 offset-lg-3 col-24 col-md-20 col-lg-18">' ?>
-			<?php if ( have_posts() ) : ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'modules/content', 'page' ) ?>
-					<?php endwhile ?>
-			<?php endif ?>
-		<?php echo '</div>'; // closing the conditional tag ?>
-		<?php if ( SeekConfig::SIDEBAR_ON_PAGES && SeekConfig::SIDEBAR && is_active_sidebar('sidebar') ) get_sidebar() ?>
-	</div>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		<?php
+		while ( have_posts() ) :
+			the_post();
+
+			get_template_part( 'template-parts/content', 'page' );
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php
-do_action('lightseek_template_end');
+get_sidebar();
 get_footer();
