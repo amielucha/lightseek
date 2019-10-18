@@ -27,5 +27,8 @@
     "gulp-uglify": "^3",
     "gulp-inject-version": "^1.0.1",
     "postcss-flexbugs-fixes": "^4.1.0"
-  }
+  },
+  "browserslist": [
+        "defaults"
+  ]
 }
