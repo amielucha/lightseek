@@ -69,7 +69,6 @@ gulp.task('watch-full', function(){
 gulp.task('default', gulp.series('js',  function(){
   var processors = [
     autoprefixer({
-        browsers: ['last 2 versions'],
         cascade: false
     }),
     cssnano(),
