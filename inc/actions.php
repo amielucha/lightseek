@@ -212,7 +212,7 @@ function lightseek_copyright() {
 }
 
 function lightseek_designed_by() {
-	printf( __('<a href="%1$s" title="%2$s" target="_blank" class="iseek-link">%3$s ', 'lightseek'), 'http://www.iseek.ie', 'Seek Internet Solutions, Fermoy, Cork, Ireland', 'Website Crafted by ' );
+	printf( __('<a href="%1$s" title="%2$s" target="_blank" class="iseek-link">%3$s ', 'lightseek'), 'http://www.iseek.ie', 'Seek Internet Solutions, Little Island, Cork, Ireland', 'Website Crafted by ' );
 	include get_template_directory() . '/images/iseek-logo.svg';
 	echo '</a>';
 }
