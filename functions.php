@@ -107,17 +107,14 @@ function lightseek_scripts() {
   // https://github.com/typekit/webfontloader
   wp_enqueue_script( 'webfont', 'https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js', array(), null );
 
-  // Font Awesome async
-  // Check if we have FontAwesome in our theme folder
-  if ( file_exists( get_stylesheet_directory() . '/fonts/fontawesome/js/fontawesome.min.js' ) ){
-    wp_enqueue_script( 'fa', get_stylesheet_directory_uri() . '/fonts/fontawesome/js/fontawesome.min.js', array(), null );
-    wp_enqueue_script( 'fa-light', get_stylesheet_directory_uri() . '/fonts/fontawesome/js/fa-light.min.js', array('fa'), null );
-    wp_enqueue_script( 'fa-solid', get_stylesheet_directory_uri() . '/fonts/fontawesome/js/fa-solid.min.js', array('fa'), null );
-    wp_enqueue_script( 'fa-brands', get_stylesheet_directory_uri() . '/fonts/fontawesome/js/fa-brands.min.js', array('fa'), null );
-  } else {
-    wp_enqueue_script( 'fa', 'https://use.fontawesome.com/releases/v5.0.10/js/all.js', array(), null );
-  }
-
+  /**
+	 * Load Font Awesome.
+	 * 
+	 * Note: the package is configured in FA Kits.
+	 */
+	wp_enqueue_script('fa-kit', 'https://kit.fontawesome.com/2aefe4a781.js', array(), null);
+	
+  
   // Main Script
   wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/main.min.js', array( 'jquery', 'webfont' ), '20170202', true );
 }
@@ -127,7 +124,7 @@ add_action( 'wp_enqueue_scripts', 'lightseek_scripts' );
  * defer/async scripts.
  */
 function add_defer_attribute($tag, $handle) {
-    $tags = array( 'webfont', 'scripts', 'fa', 'fa-light', 'fa-solid', 'fa-brands' );
+    $tags = array( 'webfont', 'scripts', 'fa-kit', 'fa-light', 'fa-solid', 'fa-brands' );
     if ( !in_array( $handle, $tags ) ) return $tag;
     return str_replace( ' src', ' defer src', $tag );
 }
