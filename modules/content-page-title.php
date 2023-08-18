@@ -21,12 +21,17 @@
 				<div class="title-section-content"><?php echo $top_banner_text; ?></div>
 			</div>
 			<div class="col-md-12">
-				<?php $youtube_id = get_field('youtube_id'); 
+				<?php $video_id = get_field('video_id'); 
 					  $video_still = get_field('video_still');
+					  $video_source = get_field('video_source');
  				?>
-				<?php if ($youtube_id) : ?>
+				<?php if ($video_id) : ?>
 					<div class="video-wrap">
-						<?php echo do_shortcode('[video_lightbox_youtube video_id="' . $youtube_id . '" width="100%" height= "100%" anchor="'.$video_still.'"]'); ?>					
+						<?php if ($video_source == 'vimeo') {
+							echo do_shortcode('[video_lightbox_vimeo5 video_id="' . $video_id . '" width="100%" height= "100%" anchor="'.$video_still.'"]'); 
+						} else {
+							echo do_shortcode('[video_lightbox_youtube video_id="' . $video_id . '" width="100%" height= "100%" anchor="'.$video_still.'"]'); 
+						}?>					
 					</div>
 				<?php endif; ?>
 			</div>
