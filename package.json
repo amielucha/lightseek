@@ -23,7 +23,7 @@
         "gulp-plumber": "^1.1.0",
         "gulp-postcss": "^8",
         "gulp-rename": "^1.2.2",
-        "gulp-sass": "^4",
+        "gulp-sass": "^5",
         "gulp-sourcemaps": "^2.2.0",
         "gulp-uglify": "^3",
         "postcss-flexbugs-fixes": "^4.1.0"
