@@ -7,26 +7,24 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title( '<h1>', '</h1>' ); ?>
+		<?php if ( is_active_sidebar( 'share-widget' ) ) dynamic_sidebar( 'share-widget' ); ?> 
 
-		<div class="entry-meta">
-			<?php if ( function_exists('time_ago') ) time_ago(); ?>
-		</div><!-- .entry-meta -->
-
-		<?php get_template_part( 'modules/module', 'cover' ); ?>
+		<div class="blog-meta"><span class="author"><?php _e('By','lightseek'); ?>&nbsp;<?php the_author(); ?></span><span class="time"><?php the_time('j M Y'); ?></span>
+		</div>
 	</header>
+
+	<?php 
+	if (has_post_thumbnail()) {
+		$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
+			if ($featured_img_url) { ?>
+				<div class="featured-image" style="background: url(<?php echo $featured_img_url; ?>) no-repeat center / auto 100%"></div>
+	<?php 	}
+	} ?>
 
 	<div class="entry-content">
 		<?php the_content() ?>
 		<?php lightseek_link_pages() ?>
 	</div>
 
-	<footer class="entry-footer">
-		<?php if ( 'post' === get_post_type() ) {
-			$categories_list = get_the_category_list( esc_html__( ', ', '_s' ) );
-			if ( $categories_list ) {
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', '_s' ) . '</span>', $categories_list );
-			}
-		} ?>
-	</footer>
 </article>

@@ -7,9 +7,10 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php $booking_online_link = get_field('booking_online_link', 'option'); ?>
 
-		<?php get_template_part( 'modules/module', 'cover' ); ?>
+		<h1 class="entry-title"><?php the_title(); ?><a class="btn btn-primary" target="_blank" href="<?php echo $booking_online_link; ?>"><?php _e('Online booking', 'lightseek' ); ?></a></h1>
+
 	</header>
 
 	<div class="entry-content">

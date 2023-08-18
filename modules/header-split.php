@@ -12,7 +12,7 @@
 							<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 						</div><!-- .site-branding -->
 					</div>
-					<label for="menu-toggle" class="menu-toggle-label hidden-md-up pull-right"><span class="hamburger" aria-hidden="true">&#8801;</span> Main Menu</label>
+					<button class="menu-toggle menu-toggle-label hidden-md-up" onclick="store.dispatch({type: 'SHOW_MENU'});"><span class="hamburger" aria-hidden="true">&#8801;</span></button>
 			<input type="checkbox" id="menu-toggle" class="menu-toggle invisible" aria-controls="primary-menu" />
 					<?php if ( has_nav_menu( 'primary' ) ) wp_nav_menu (
 				array (

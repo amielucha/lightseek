@@ -9,6 +9,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:image" content=""/>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
@@ -24,9 +25,7 @@
 		get_template_part( 'modules/topbar', 'default' );
 	?>
 
-	<header class="site-header" <?php do_action('lightseek_header_bg') ?>>
-		<?php do_action('lightseek_header') ?>
-	</header>
+	<?php get_template_part( 'modules/header', 'split' ); ?>
 
 <div id="page-wrapper" class="page-wrapper">
 	<div id="page" class="hfeed site">

@@ -1,0 +1,270 @@
+/*!
+*
+*   Additional CSS
+*
+*/
+
+//
+//  MEDIA QUERIES
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// A map of breakpoints.
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+);
+//
+//  RESPOND ABOVE
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// @include respond-above(sm) {}
+@mixin respond-above($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+//
+//  RESPOND BELOW
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// @include respond-below(sm) {}
+@mixin respond-below($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Write the media query.
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+//
+//  RESPOND BETWEEN
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// @include respond-between(sm, md) {}
+@mixin respond-between($lower, $upper) {
+  // If both the lower and upper breakpoints exist in the map.
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    // Get the lower and upper breakpoints.
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+    // Write the media query.
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+    // If one or both of the breakpoints don't exist.
+  } @else {
+    // If lower breakpoint is invalid.
+    @if (map-has-key($breakpoints, $lower) ==false) {
+      // Log a warning.
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+    // If upper breakpoint is invalid.
+    @if (map-has-key($breakpoints, $upper) ==false) {
+      // Log a warning.
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}
+
+button.menu-toggle-label {
+  display: none !important;
+}
+#responsive-menu-container {
+  li.responsive-menu-item,
+  li.responsive-menu-item a {
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none !important;
+    }
+  }
+}
+
+.page-ams-diagnostics {
+  .page-title[style] {
+    background-position: right bottom !important;
+  }
+  .entry-header {
+    display: none;
+  }
+  .content-area {
+    padding-top: 45px;
+  }
+  h2 {
+    margin-bottom: 45px;
+  }
+  div.btn-primary.btn-grey {
+    background-color: #e8e8e8;
+    border-color: #e8e8e8;
+    color: #1a202c;
+    font-weight: bold;
+    width: auto;
+    padding-right: 53px;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+  div.btn-primary.btn-grey.open {
+    background-color: #03b7b0;
+    border-color: #03b7b0;
+    color: white;
+    padding-right: 22px;
+    &:after {
+      content: "\e5cd";
+    }
+    .content {
+      opacity: 1;
+      margin-top: 10px;
+    }
+  }
+  a.btn-primary.btn-white {
+    color: #03b7b0;
+    background-color: white;
+    border-color: white;
+    font-weight: bold;
+    font-size: 18.5px;
+    padding-right: 50px;
+    width: auto;
+  }
+  .referral-links-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 50%;
+    column-gap: 48px;
+    padding: 0 200px;
+    margin: 45px 0 35px 0;
+  }
+  .referral-links-wrapper {
+    .link-wrapper {
+      display: flex;
+      flex-direction: column;
+      .button-wrap {
+        margin-bottom: 10px;
+      }
+      .content {
+        display: none;
+        opacity: 0;
+        white-space: normal;
+        font-size: 16px;
+        font-weight: normal;
+        .ins,
+        .self,
+        .single {
+          font-size: 18.5px;
+          font-weight: bold;
+          display: flex;
+          padding-right: 68px;
+        }
+        .ins,
+        .single {
+          margin-top: 25px;
+          span {
+            flex: 1;
+          }
+        }
+        .btn {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+  @include respond-below(md) {
+    .referral-links-wrapper {
+      display: block;
+      padding: 0;
+      margin: 45px 0 35px 0;
+    }
+
+    .page-title[style] {
+      background-position: right -200px center !important;
+    }
+
+    .referral-links-wrapper {
+      .link-wrapper {
+        .button-wrap {
+          margin-bottom: 25px;
+        }
+      }
+    }
+    .page-title {
+      padding-bottom: 7rem;
+    }
+  }
+}
+
+.team-members-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  .team-member {
+    flex: 0 1 calc(33% - 60px);
+    &:not(:nth-child(3n)) {
+      margin-left: 60px;
+    }
+    .member-photo {
+      height: 100px;
+      width: 100px;
+      margin: 0 auto 25px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #e2e8f0;
+      cursor: pointer;
+      svg {
+        height: 90px;
+        margin: 10px;
+
+        path {
+          fill: #a0aec0;
+        }
+      }
+    }
+    .member-name,
+    .member-title,
+    .excerpt {
+      margin-bottom: 15px;
+    }
+    .excerpt {
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .member-name,
+    .member-title {
+      text-align: center;
+    }
+    .excerpt {
+      display: none;
+      opacity: 0;
+      transition: 0.35s opacity;
+      &.open {
+        opacity: 1;
+        transition: 0.75s opacity;
+      }
+    }
+  }
+  @include respond-below(md) {
+    flex-flow: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .team-member {
+      flex: 0 1 100%;
+      margin-left: 0 !important;
+      margin-bottom: 25px;
+    }
+  }
+}
